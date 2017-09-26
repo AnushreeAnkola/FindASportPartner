@@ -28,6 +28,11 @@ strong {
   font-weight: 400;
 }
 
+.navbar-inverse {
+     background-color: #222;
+     border-color: #080808;
+}
+
 .tile {
   width: 100%;
   display: inline-block;
@@ -36,6 +41,7 @@ strong {
   padding: 20px;
   margin-bottom: 30px;
   border-radius: 10px;
+  cursor:pointer;
 }
 .tile .title {
   margin-top: 0px;
