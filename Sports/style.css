@@ -1,0 +1,142 @@
+/*@charset "utf-8";
+/* CSS Document */
+*{
+	padding:0;
+	margin:0;
+}
+html{
+	height:100%;
+}
+body{
+	font-family: "Helvetica", Arial, Sans-serf;
+	font-weight:400;
+    font-size: 14px;
+    color: #4D4D4F;
+    line-height: 20px;
+    margin: 0px;
+    padding: 0px;
+	 height:100%;
+	 position:relative;
+}
+
+.wrapper{
+	height:100%;
+}
+ .container-wrapper{
+ 	background-color:#fff;
+	padding:0 30px;
+ }
+header{
+	padding:20px 8%; 
+	background-color:#607d8b;
+}
+#login-buttons{
+	padding-top:15px;
+}
+#login-buttons a{
+	margin:0 12px;
+	font-size:0.9em;
+}
+.listGroup {
+	margin-top:30px;
+}
+.listGroup .sportList{
+	max-width: 280px;
+	max-height:170px;
+	border:1px solid rgba(211,211,211,0.5);
+	border-radius:5px;
+	margin:0 auto;
+	text-align:center;
+	display:block;
+	text-decoration:none;
+	font-size:100%;
+	font-weight:500;
+}
+.listGroup .sportList:hover{
+	-webkit-box-shadow:3px 2px 2px 1px #ccc;
+  -moz-box-shadow:3px 2px 2px 1px #ccc; 
+  box-shadow:3px 2px 2px 1px #ccc; 
+}
+.listGroup .listGroupItem{
+	margin:20px 0;
+	min-height:190px;
+}
+.listGroup .sports1{
+	background-color:#4caf50;
+}
+.listGroup .sports2{
+	background-color:#2196f3;
+}
+.listGroup .sports3{
+	background-color:#ff9800;
+}
+.listGroup .sports4{
+	background-color:#9c27b0;
+}
+.listGroup .sports5{
+	background-color:#009688;
+}
+.listGroup .sports6{
+	background-color:#f44336;
+}
+.listGroup .sportList img{
+	display:block;
+	margin:8px auto;
+	width:40%;
+}
+.listGroup .sportName{
+	color:#fff;
+}
+ footer{ 
+  position:fixed;
+  z-index:99;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:#ddd; 
+ } 
+  footer p.footertext{ 
+   text-align: center; 
+   text-transform: uppercase; 
+   font-size: 80%; 
+   color: #4d4d4f; 
+   display:block;
+   margin:5px 0 !important;
+  } 
+ #login 
+ { 
+ position: relative; 
+ right: -1000px; 
+ top:-40px; 
+ } 
+ #sign{ 
+ background-color: #4CAF50; 
+ border: none; 
+ color: white; 
+ padding: 10px 20px; 
+ text-align: center; 
+ text-decoration: none; 
+ display: inline-block; 
+ font-size: 16px; 
+ margin: 4px 2px; 
+ cursor: pointer; 
+ } 
+ #sport{ 
+ width: 200px; 
+ height: 130px; 
+ background-color: #4C535; 
+ border: none; 
+ color: white; 
+ text-align: center; 
+ text-decoration: none; 
+ display: inline-block; 
+ font-size: 16px; 
+ margin: 70px 70px; 
+ cursor: pointer; 
+ border-radius: 12px; 
+ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+ } 
+ #sport:hover { 
+ background-color: #000;
+ color: white; 
+ } 
