@@ -7,10 +7,62 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="style1.css" type="text/css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <script type="text/javascript" src="C:/Users/anuan/Downloads/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+/***********************************************
+* Limit number of checked checkboxes script- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+function checkboxlimit(checkgroup, limit){
+	var checkgroup=checkgroup
+	var limit=limit
+	for (var i=0; i<checkgroup.length; i++){
+		checkgroup[i].onclick=function(){
+		var checkedcount=0
+		for (var i=0; i<checkgroup.length; i++)
+			checkedcount+=(checkgroup[i].checked)? 1 : 0
+		if (checkedcount>limit){
+			alert("You can only select a maximum of "+limit+" checkboxes")
+			this.checked=false
+			}
+		}
+	}
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+$(document).ready(function(){
+    $('input[type="checkbox"]').click(function(){
+        var inputValue = $(this).attr("value");
+        $("." + inputValue).toggle();
+    });
+});
+</script>
 
 </head>
 
@@ -82,34 +134,45 @@
 			</div>					
 						
 
-			<div class="row">
-							
-				<div class="col-sm-6 form-group">
-					<label>Phone Number</label>
+	<div class="row">
+	<div class="col-sm-6 form-group">
+			<label>Phone Number</label>
 						<input type="tel" name="usrtel" placeholder="Enter Phone Number Here.." class="form-control">
-				</div>		
-							
-			</div>	
+	</div>		
+	</div>	
 					
 		<!-- --- Add your Favorite Sport -- -->	
-		<div class="col-sm-12">
 		<div class="row">
 		<div class="col-sm-6 form-group">
 		
-		<script type="text/javascript" src="script1.js"></script>
-		<form name="anu" id="anu">
-		<label>Pick any 3 Favourite Sport</label><br>
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Tennis"> I like Tennis<br>
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Basketball"> I like Basketball<br>	
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Vollyball"> I like Vollyball<br>
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Hiking"> I like Hiking<br>
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Swimming"> I like Swimming<br>
-				<input class="single-checkbox" type="checkbox" name="sport1" value="Soccer"> I like Soccer<br>
-		</div>
+		<label>Pick any 3 of your favourite sport </label>
+		<form id="game" name="game">
+		<input type="checkbox" name="sport1" /> Tennis<br /> 
+		  
+	<div class="dropdown">
+    <button class="dropbtn" type="button" data-toggle="dropdown" onclick="myFunction()">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+	</div>
+
+		<input type="checkbox" name="sport1" /> Basketball<br />
+		<input type="checkbox" name="sport1" /> Vollyball<br />
+		<input type="checkbox" name="sport1" /> Hiking<br />
+		<input type="checkbox" name="sport1" /> Swimming<br />
+		<input type="checkbox" name="sport1" /> Soccer<br />
 		</form>
-		
 		</div>
 		</div>
+		<script type="text/javascript">
+
+//Syntax: checkboxlimit(checkbox_reference, limit)
+checkboxlimit(document.forms.game.sport1, 3)
+
+</script>
 	
 			<div class="row">
 					
@@ -140,26 +203,28 @@
 				</div>		
 							
 			</div>
+			<!-- Button -->
+		<div class="row">
+		<div class="col-sm-6 form-group">					
+			 <div class="controls">	
+				 <button class="btn btn-success">Register Me</button>
+						 
+				 <button class="btn btn-success">Go Back</button>
+			</div>
+		 	
+		</div>
+        </div>
+			 </div>
+	      	 </div>
+			 </div>
+
+	
+	<footer>
+        	<p class="footertext">Copyright 2017-2018 Pritul Padival</p>
+        </footer>
 		
-	      	
-	</div>
-	</div>
 	</div>
 
-		<div class="control-group">
-   
-		   <!-- Button -->
-     
-			 <div class="controls">
-    
-			    <button class="btn btn-success">Register Me</button>
-    
-                         </div>
-  
-	<footer>
-        	<p class="footertext">Copyright 2017-2018</p>
-        </footer>
-</div>
 		 		
 </body>
 
