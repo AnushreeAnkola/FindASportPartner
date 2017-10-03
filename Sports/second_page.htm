@@ -62,6 +62,16 @@ $(document).ready(function(){
         $("." + inputValue).toggle();
     });
 });
+
+ $(document).ready(function() {
+    
+        var $dropdown = $("#drop").hide(),
+            $cbs = $('input[name="sport1"]').click(function() {
+                $dropdown.toggle( $cbs.is(":checked") );
+            });
+    
+    });
+
 </script>
 
 </head>
@@ -148,22 +158,22 @@ $(document).ready(function(){
 		<label>Pick any 3 of your favourite sport </label>
 		<form id="game" name="game">
 		<input type="checkbox" name="sport1" /> Tennis<br /> 
-		  
-	<div class="dropdown">
-    <button class="dropbtn" type="button" data-toggle="dropdown" onclick="myFunction()">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-	</div>
-
 		<input type="checkbox" name="sport1" /> Basketball<br />
 		<input type="checkbox" name="sport1" /> Vollyball<br />
 		<input type="checkbox" name="sport1" /> Hiking<br />
 		<input type="checkbox" name="sport1" /> Swimming<br />
 		<input type="checkbox" name="sport1" /> Soccer<br />
+		
+		<div class="dropdown">
+		<button class="dropbtn" type="button" id="drop" data-toggle="dropdown" onclick="myFunction()">Dropdown Example
+		<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+		<li><a href="#">HTML</a></li>
+		<li><a href="#">CSS</a></li>
+		<li><a href="#">JavaScript</a></li>
+		</ul>
+		</div>
+		
 		</form>
 		</div>
 		</div>
