@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server"> 	  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="style1.css" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="C:/Users/anuan/Downloads/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	
+	<script type="text/javascript">
+
+/***********************************************
+* Limit number of checked checkboxes script- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+function checkboxlimit(checkgroup, limit){
+	var checkgroup=checkgroup
+	var limit=limit
+	for (var i=0; i<checkgroup.length; i++){
+		checkgroup[i].onclick=function(){
+		var checkedcount=0
+		for (var i=0; i<checkgroup.length; i++)
+			checkedcount+=(checkgroup[i].checked)? 1 : 0
+		if (checkedcount>limit){
+			alert("You can only select a maximum of "+limit+" checkboxes")
+			this.checked=false
+			}
+		}
+	}
+}
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+ $(document).ready(function() {
+    
+        var $dropdown = $("#drop").hide(),
+            $cbs = $('input[name="sport1"]').click(function() {
+                $dropdown.toggle( $cbs.is(":checked") );
+            });
+    
+    });
+	
+function inspectbox() {
+ if (document.forms.game.morelocations.checked) document.forms.game.sport.style.visibility = 'visible'; else document.forms.game.sport.style.visibility = 'hidden';
+}
+function inspectbox2() {
+ if (document.forms.game.morelocations2.checked) document.forms.game.sport2.style.visibility = 'visible'; else document.forms.game.sport2.style.visibility = 'hidden';
+}
+
+function inspectbox3() {
+ if (document.forms.game.morelocations3.checked) document.forms.game.sport3.style.visibility = 'visible'; else document.forms.game.sport3.style.visibility = 'hidden';
+}
+function inspectbox4() {
+ if (document.forms.game.morelocations4.checked) document.forms.game.sport4.style.visibility = 'visible'; else document.forms.game.sport4.style.visibility = 'hidden';
+}
+
+function inspectbox5() {
+ if (document.forms.game.morelocations5.checked) document.forms.game.sport5.style.visibility = 'visible'; else document.forms.game.sport5.style.visibility = 'hidden';
+}
+function inspectbox6() {
+ if (document.forms.game.morelocations6.checked) document.forms.game.sport6.style.visibility = 'visible'; else document.forms.game.sport6.style.visibility = 'hidden';
+}
+
+</script>
+
+
+
+</head>
+
+<body>
+<div class="wrapper">
+	
+	<header class="clearfix">
+			<div id="logo" class="pull-left">
+				<a href="#"><img src="logo.png" class="img-responsive" alt="Sports Partner Finder"></a>
+			</div>
+			<div id="login-button" class="pull-right">
+        		<a href="signin.html" class="btn btn-danger">Sign In</a>	
+			</div>
+    </header>
+		
+	<div class="container">
+   	<h1>Edit my Account</h1>
+		
+	<div class="col-lg-12">
+	
+		<div class="row">
+							
+				<div class="col-sm-6 form-group">
+					<label>First Name</label>
+						<input type="text" placeholder="Enter First Name Here.." class="form-control">
+                					<p class="help-block">Enter you First Name only</p>
+				</div>
+             				 
+				<div class="col-sm-6 form-group">
+					<label>Last Name</label>
+						<input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                					<p class="help-block">Enter you Last Name only</p>
+				</div>
+		 	
+		</div>
+		
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Gender</label><br>
+						<input type="radio" name="gender" value="male" checked> Male<br>
+						<input type="radio" name="gender" value="female"> Female<br>
+						<input type="radio" name="gender" value="other"> Other <br>
+				</div>
+		</div>
+	
+				
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Date of Birth</label> <br>
+						<input type="date" name="bday" class="form-control">
+				</div>	
+		</div>						
+						
+					
+		<div class="row">
+							
+				<div class="col-sm-4 form-group">
+					<label>City</label>
+						<input type="text" placeholder="Enter City Name Here.." class="form-control">
+				</div>	
+				<div class="col-sm-4 form-group">
+					<label>State</label>
+						<input type="text" placeholder="Enter State Name Here.." class="form-control">
+				</div>	
+				<div class="col-sm-4 form-group">
+					<label>Zip</label>
+						<input type="number" placeholder="Enter Zip Code Here.." class="form-control">
+				</div>		
+			
+		</div>					
+						
+
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Phone Number</label>
+						<input type="tel" name="usrtel" placeholder="Enter Phone Number Here.." class="form-control">
+				</div>		
+		</div>	
+					
+		<!-- --- Add your Favorite Sport -- -->	
+		
+		<div class="row">
+		
+		<div class="col-sm-6 form-group">
+		
+		<label>Pick any 3 Favourite Sport and select your Proficiency level</label><br>
+		<form id="game" name="game">
+		
+		<form name='game'>
+		<input name="morelocations" type="checkbox" onClick="inspectbox()">Tennis
+		
+		<select name="sport" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+		
+		</br><input name="morelocations2" type="checkbox" onClick="inspectbox2()">Basketball
+		
+		<select name="sport2" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+		
+		</br><input name="morelocations3" type="checkbox" onClick="inspectbox3()">Vollyball
+		
+		<select name="sport3" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+		</br><input name="morelocations4" type="checkbox" onClick="inspectbox4()">Hiking
+		
+		<select name="sport4" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+		
+		</br><input name="morelocations5" type="checkbox" onClick="inspectbox5()">Swimming
+		
+		<select name="sport5" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+
+		</br><input name="morelocations6" type="checkbox" onClick="inspectbox6()">Soccer
+	
+		<select name="sport6" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+</form>	
+		</div>
+		</div>
+		<script type="text/javascript">
+
+//Syntax: checkboxlimit(checkbox_reference, limit)
+checkboxlimit(document.forms.game.sport1, 3)
+
+
+</script>
+	
+			<div class="row">
+					
+				<div class="col-sm-6 form-group">
+					<label>Email ID</label>
+						<input type="email" id="email" name="email" placeholder="Enter Email ID Here.." class="form-control">
+				</div>		
+							
+			</div>	
+						
+
+			<div class="row">
+							
+				<div class="col-sm-6 form-group">
+					<label>Password</label>
+						<input type="password" id="password" name="password" placeholder="Enter Password Here.." class="form-control">
+							<p class="help-block">Password should be at least 4 characters</p>
+				</div>		
+			</div>	
+
+						
+			<div class="row">
+							
+				<div class="col-sm-6 form-group">
+					<label>Confirm Password</label>
+						<input type="password" id="password_confirm" name="password_confirm" placeholder="Enter Password Here.." class="form-control">
+							<p class="help-block">Please confirm password</p>
+				</div>		
+							
+			</div>
+			<!-- Button -->
+		<div class="row">
+		<div class="col-sm-6 form-group">					
+			 <div class="controls">	
+				 <button class="btn btn-success">Submit</button>
+						 
+				 <button class="btn btn-success">Go Back</button>
+			</div>
+		 	
+		</div>
+        </div>
+			 </div>
+	      	 </div>
+			 </div>
+
+	
+	<footer>
+        	<p class="footertext">Copyright 2017-2018 Pritul Padival</p>
+        </footer>
+		
+	</div>
+
+		 		
+</body>
+
+</html>
