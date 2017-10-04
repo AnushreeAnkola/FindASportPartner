@@ -11,7 +11,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript">
+
+	
+	<script type="text/javascript">
 
 /***********************************************
 * Limit number of checked checkboxes script- by JavaScript Kit (www.javascriptkit.com)
@@ -56,12 +58,6 @@ window.onclick = function(event) {
   }
 }
 
-$(document).ready(function(){
-    $('input[type="checkbox"]').click(function(){
-        var inputValue = $(this).attr("value");
-        $("." + inputValue).toggle();
-    });
-});
 
  $(document).ready(function() {
     
@@ -71,8 +67,31 @@ $(document).ready(function(){
             });
     
     });
+	
+function inspectbox() {
+ if (document.forms.game.morelocations.checked) document.forms.game.sport.style.visibility = 'visible'; else document.forms.game.sport.style.visibility = 'hidden';
+}
+function inspectbox2() {
+ if (document.forms.game.morelocations2.checked) document.forms.game.sport2.style.visibility = 'visible'; else document.forms.game.sport2.style.visibility = 'hidden';
+}
+
+function inspectbox3() {
+ if (document.forms.game.morelocations3.checked) document.forms.game.sport3.style.visibility = 'visible'; else document.forms.game.sport3.style.visibility = 'hidden';
+}
+function inspectbox4() {
+ if (document.forms.game.morelocations4.checked) document.forms.game.sport4.style.visibility = 'visible'; else document.forms.game.sport4.style.visibility = 'hidden';
+}
+
+function inspectbox5() {
+ if (document.forms.game.morelocations5.checked) document.forms.game.sport5.style.visibility = 'visible'; else document.forms.game.sport5.style.visibility = 'hidden';
+}
+function inspectbox6() {
+ if (document.forms.game.morelocations6.checked) document.forms.game.sport6.style.visibility = 'visible'; else document.forms.game.sport6.style.visibility = 'hidden';
+}
 
 </script>
+
+
 
 </head>
 
@@ -93,94 +112,136 @@ $(document).ready(function(){
 		
 	<div class="col-lg-12">
 	
-	<div class="row">
+		<div class="row">
 							
 				<div class="col-sm-6 form-group">
-				<label>First Name</label>
+					<label>First Name</label>
 						<input type="text" placeholder="Enter First Name Here.." class="form-control">
                 					<p class="help-block">Enter you First Name only</p>
 				</div>
              				 
 				<div class="col-sm-6 form-group">
-				<label>Last Name</label>
+					<label>Last Name</label>
 						<input type="text" placeholder="Enter Last Name Here.." class="form-control">
                 					<p class="help-block">Enter you Last Name only</p>
 				</div>
 		 	
-	</div>
-	<div class="row">
-	<div class="col-sm-6 form-group">
-				<label>Gender</label><br>
-				 	<input type="radio" name="gender" value="male" checked> Male<br>
-  					<input type="radio" name="gender" value="female"> Female<br>
- 					<input type="radio" name="gender" value="other"> Other <br>
-	</div>
-	</div>
+		</div>
+		
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Gender</label><br>
+						<input type="radio" name="gender" value="male" checked> Male<br>
+						<input type="radio" name="gender" value="female"> Female<br>
+						<input type="radio" name="gender" value="other"> Other <br>
+				</div>
+		</div>
 	
 				
-	<div class="row">
-	<div class="col-sm-6 form-group">
-				<label>Date of Birth</label> <br>
-  					<input type="date" name="bday" class="form-control">
-			</div>	
-	</div>						
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Date of Birth</label> <br>
+						<input type="date" name="bday" class="form-control">
+				</div>	
+		</div>						
 						
 					
-			<div class="row">
+		<div class="row">
 							
 				<div class="col-sm-4 form-group">
 					<label>City</label>
-					<input type="text" placeholder="Enter City Name Here.." class="form-control">
+						<input type="text" placeholder="Enter City Name Here.." class="form-control">
 				</div>	
 				<div class="col-sm-4 form-group">
 					<label>State</label>
-					<input type="text" placeholder="Enter State Name Here.." class="form-control">
+						<input type="text" placeholder="Enter State Name Here.." class="form-control">
 				</div>	
-					<div class="col-sm-4 form-group">
+				<div class="col-sm-4 form-group">
 					<label>Zip</label>
-					<input type="number" placeholder="Enter Zip Code Here.." class="form-control">
+						<input type="number" placeholder="Enter Zip Code Here.." class="form-control">
 				</div>		
 			
-			</div>					
+		</div>					
 						
 
-	<div class="row">
-	<div class="col-sm-6 form-group">
-			<label>Phone Number</label>
+		<div class="row">
+		
+				<div class="col-sm-6 form-group">
+					<label>Phone Number</label>
 						<input type="tel" name="usrtel" placeholder="Enter Phone Number Here.." class="form-control">
-	</div>		
-	</div>	
+				</div>		
+		</div>	
 					
 		<!-- --- Add your Favorite Sport -- -->	
+		
 		<div class="row">
+		
 		<div class="col-sm-6 form-group">
 		
-		<label>Pick any 3 of your favourite sport </label>
+		<label>Pick any 3 Favourite Sport and select your Proficiency level</label><br>
 		<form id="game" name="game">
-		<input type="checkbox" name="sport1" /> Tennis<br /> 
-		<input type="checkbox" name="sport1" /> Basketball<br />
-		<input type="checkbox" name="sport1" /> Vollyball<br />
-		<input type="checkbox" name="sport1" /> Hiking<br />
-		<input type="checkbox" name="sport1" /> Swimming<br />
-		<input type="checkbox" name="sport1" /> Soccer<br />
 		
-		<div class="dropdown">
-		<button class="dropbtn" type="button" id="drop" data-toggle="dropdown" onclick="myFunction()">Dropdown Example
-		<span class="caret"></span></button>
-		<ul class="dropdown-menu">
-		<li><a href="#">HTML</a></li>
-		<li><a href="#">CSS</a></li>
-		<li><a href="#">JavaScript</a></li>
-		</ul>
-		</div>
+		<form name='game'>
+		<input name="morelocations" type="checkbox" onClick="inspectbox()">Tennis
 		
-		</form>
+		<select name="sport" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+		
+		</br><input name="morelocations2" type="checkbox" onClick="inspectbox2()">Basketball
+		
+		<select name="sport2" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+		
+		</br><input name="morelocations3" type="checkbox" onClick="inspectbox3()">Vollyball
+		
+		<select name="sport3" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+		</br><input name="morelocations4" type="checkbox" onClick="inspectbox4()">Hiking
+		
+		<select name="sport4" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+		
+		</br><input name="morelocations5" type="checkbox" onClick="inspectbox5()">Swimming
+		
+		<select name="sport5" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+
+		</br><input name="morelocations6" type="checkbox" onClick="inspectbox6()">Soccer
+	
+		<select name="sport6" id="sport1" style="visibility:hidden">
+		<option>Am</option>
+		<option>In</option>
+		<option>Ex</option>
+		</select>
+
+</form>	
 		</div>
 		</div>
 		<script type="text/javascript">
 
 //Syntax: checkboxlimit(checkbox_reference, limit)
 checkboxlimit(document.forms.game.sport1, 3)
+
 
 </script>
 	
