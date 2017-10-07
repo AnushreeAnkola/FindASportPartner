@@ -21,7 +21,7 @@
          </div>
         
         <div id="login-buttons" class="pull-right">
-        		<a href="second_page.htm" class="btn btn-danger">Sign In</a>	
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger">Sign In</button>
 				<a href="signup.html" class=" btn btn-success">Sign Up</a>
 				
 		</div>
@@ -48,8 +48,44 @@
 		
 		</div>
     	<footer>
-        	<p class="footertext">Copyright 2017-2018 Pritul Padival</p>
+        	<p class="footertext">Copyright 2017-2018</p>
         </footer>
    </div>
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required></br>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required></br>
+        
+      <button type="submit">Login</button></br>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </body>
 </html>
