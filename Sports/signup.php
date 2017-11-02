@@ -1,23 +1,8 @@
 <?php
-	require 'dbconfig/config.php';
+	include_once 'header.php';
+	//require 'dbconfig/config.php';
 ?>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head runat="server"> 	  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="style1.css" type="text/css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="C:/Users/anuan/Downloads/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
 
 /***********************************************
@@ -104,7 +89,7 @@ $("#dd6").prop("disabled", "disabled");
 </head>
 
 <body>
-<form action="signup.php" method="post">
+<form action="includes/signup-inc.php" method="POST">
 
 <div class="wrapper">
 	
@@ -128,22 +113,20 @@ $("#dd6").prop("disabled", "disabled");
 				<div class="col-sm-6 form-group">
 				<label>First Name</label></br>
 						<input name="fname" type="text" placeholder="Enter First Name Here.." class="form-control" required/>
-                					<p class="help-block">Enter you First Name only</p>
 				</div>
              				 
 				<div class="col-sm-6 form-group">
 				<label>Last Name</label></br>
 						<input name="lname" type="text" placeholder="Enter Last Name Here.." class="form-control" required/>
-                					<p class="help-block">Enter you Last Name only</p>
 				</div>
 		 	
 	</div>
 	<div class="row">
 	<div class="col-sm-6 form-group">
 				<label>Gender</label><br>
-				 	<input name="gender" type="radio" name="gender" value="Male" checked> Male<br>
-  					<input name="gender" type="radio" name="gender" value="Female"> Female<br>
- 					<input name="gender" type="radio" name="gender" value="other"> Other <br>
+				 	<input name="gender" type="radio" value="Male" checked> Male<br>
+  					<input name="gender" type="radio" value="Female"> Female<br>
+ 					<input name="gender" type="radio" value="other"> Other <br>
 	</div>
 	</div>
 	
@@ -248,7 +231,8 @@ $("#dd6").prop("disabled", "disabled");
 //Syntax: checkboxlimit(checkbox_reference, limit)
 checkboxlimit(document.forms.game.sport1, 3)
 
-</script>
+//pending closing statement from header.php
+ </script>
 	
 			<div class="row">
 					
@@ -296,116 +280,28 @@ checkboxlimit(document.forms.game.sport1, 3)
 			 </div>
 			 
 </form>
-
-			 <?php
-				if(isset($_POST['submit_btn']))
-				{
-					// echo '<script type="text/javascript"> alert("Submit button clicked") </script>';
-					//defining variables to hold values of fields
-					
-					$fname=$_POST['fname'];
-					$lname=$_POST['lname'];
-					$gender=$_POST['gender'];
-					$dob=$_POST['dob'];
-					$city=$_POST['city'];
-					$state=$_POST['state'];
-					$zip=$_POST['zip'];
-					$phnum=$_POST['phnum'];
-					
-					if(isset($_POST['tennis'])){
-						$tennis=$_POST['tennis'];
-					} else {
-						$tennis="";
-					}
-					
-					if(isset($_POST['basketball'])){
-						$basketball=$_POST['basketball'];
-					} else {
-						$basketball="";
-					}
-					
-					if(isset($_POST['volleyball'])){
-						$volleyball=$_POST['volleyball'];
-					} else {
-						$volleyball="";
-					}
-
-					if(isset($_POST['hiking'])){
-						$hiking=$_POST['hiking'];
-					} else {
-						$hiking="";
-					}
-					
-					if(isset($_POST['swimming'])){
-						$swimming=$_POST['swimming'];
-					} else {
-						$swimming="";
-					}
-					
-					if(isset($_POST['soccer'])){
-						$soccer=$_POST['soccer'];
-					} else {
-						$soccer="";
-					}
-					
-					$email=$_POST['email'];
-					$password=$_POST['password'];
-					$cpassword=$_POST['password_confirm'];
-					
-					if($cpassword == $password)
-					{
-						$query= "select * from user WHERE Email='$email'";
-						$query_run=mysqli_query($con,$query);
-						
-						if(mysqli_num_rows($query_run) > 0)
-						{
-							// there is already email address exist
-							echo '<script type="text/javascript"> alert("Email address is already exists .... please try another email address") </script>';
-						}
-						else
-						{ 
-							$query= "INSERT INTO `User` (`First_Name`, `Last_Name`, `Gender`, `DOB`, `City`, `State`, `Zip`, `Ph_Number`, `Tennis`, `Basketball`, `Volleyball`, `Hiking`, `Swimming`, `Soccer`, `Email`, `Password`) VALUES ('$fname', '$lname', '$gender', '$dob', '$city', '$state', '$zip', '$phnum', '$tennis', '$basketball', '$volleyball', '$hiking', '$swimming', '$soccer', '$email', '$password')";
-
-							$query_run=mysqli_query($con,$query);
-							
-							if($query_run)
-							{
-								echo '<script type="text/javascript"> alert("Your account has been created successfully!") </script>';
-							}
-							else
-							{
-								echo '<script type="text/javascript"> alert("Error!") </script>';
-							}
-						}
-					}
-					else
-					{
-						echo '<script type="text/javascript"> alert("Password and confirm password is not match!!! please try again") </script>';
-					} 
-				
-				}
-					
-				?>
 	
 	<footer>
-        	<p class="footertext">Copyright 2017-2018 Pritul Padival</p>
+        	<p class="footertext">Copyright 2017-2018 </p>
     </footer>
 		
 	</div>
 	
+	<!-- Login section modal dialog box -->
 	<div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <!--<form class="modal-content animate" action="/action_page.php">-->
+  <form class="modal-content animate" action="includes/login-inc.php" method="POST">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
 
     <div class="container-here">
       <label><b>Username</b></label>
-      <input type="text1" placeholder="Enter Username" name="uname" required></br>
+      <input type="text" placeholder="Enter Username" name="uname" required></br>
 
       <label><b>Password</b></label>
-      <input type="password1" placeholder="Enter Password" name="psw" required></br>
+      <input type="password" placeholder="Enter Password" name="pwd" required></br>
         
       <button type="submit">Login</button></br>
       <input type="checkbox" checked="checked"> Remember me
