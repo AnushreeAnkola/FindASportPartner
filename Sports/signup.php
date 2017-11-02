@@ -112,12 +112,12 @@ $("#dd6").prop("disabled", "disabled");
 							
 				<div class="col-sm-6 form-group">
 				<label>First Name</label></br>
-						<input name="fname" type="text" placeholder="Enter First Name Here.." class="form-control" required/>
+						<input name="fname" type="text" placeholder="Enter First Name Here.." class="form-control"/>
 				</div>
              				 
 				<div class="col-sm-6 form-group">
 				<label>Last Name</label></br>
-						<input name="lname" type="text" placeholder="Enter Last Name Here.." class="form-control" required/>
+						<input name="lname" type="text" placeholder="Enter Last Name Here.." class="form-control"/>
 				</div>
 		 	
 	</div>
@@ -134,7 +134,7 @@ $("#dd6").prop("disabled", "disabled");
 	<div class="row">
 	<div class="col-sm-6 form-group">
 				<label>Date of Birth</label> <br>
-  					<input type="date" name="dob" class="form-control" required/>
+  					<input type="date" name="dob" class="form-control"/>
 			</div>	
 	</div>						
 						
@@ -143,15 +143,15 @@ $("#dd6").prop("disabled", "disabled");
 							
 				<div class="col-sm-4 form-group">
 					<label>City</label> 
-					<input type="text" name="city" placeholder="Enter City Name Here.." class="form-control" required/>
+					<input type="text" name="city" placeholder="Enter City Name Here.." class="form-control"/>
 				</div>	
 				<div class="col-sm-4 form-group">
 					<label>State</label>
-					<input type="text" name="state" placeholder="Enter State Name Here.." class="form-control" required/>
+					<input type="text" name="state" placeholder="Enter State Name Here.." class="form-control"/>
 				</div>	
 					<div class="col-sm-4 form-group">
 					<label>Zip</label>
-					<input type="number" name="zip" placeholder="Enter Zip Code Here.." class="form-control" required/>
+					<input type="number" name="zip" placeholder="Enter Zip Code Here.." class="form-control"/>
 				</div>		
 			
 			</div>					
@@ -160,7 +160,7 @@ $("#dd6").prop("disabled", "disabled");
 	<div class="row">
 	<div class="col-sm-6 form-group">
 			<label>Phone Number</label>
-						<input type="tel" name="phnum" placeholder="Enter Phone Number Here.." class="form-control" required/>
+						<input type="tel" name="phnum" placeholder="Enter Phone Number Here.." class="form-control"/>
 	</div>		
 	</div>	
 					
@@ -238,7 +238,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 					
 				<div class="col-sm-6 form-group">
 					<label>Email ID</label>
-						<input type="email" id="email" name="email" placeholder="Enter Email ID Here.." class="form-control" required/>
+						<input type="email" id="email" name="email" placeholder="Enter Email ID Here.." class="form-control"/>
 				</div>		
 							
 			</div>	
@@ -247,7 +247,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 							
 				<div class="col-sm-6 form-group">
 					<label>Password</label>
-						<input type="password" id="password" name="password" placeholder="Enter Password Here.." class="form-control" required/>
+						<input type="password" id="password" name="password" placeholder="Enter Password Here.." class="form-control"/>
 							<p class="help-block">Password should be at least 4 characters</p>
 				</div>		
 			</div>	
@@ -257,8 +257,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 							
 				<div class="col-sm-6 form-group">
 					<label>Confirm Password</label>
-						<input type="password" id="password_confirm" name="password_confirm" placeholder="Enter Password Here.." class="form-control" required/>
-							<p class="help-block">Please confirm password</p>
+						<input type="password" id="password_confirm" name="password_confirm" placeholder="Enter Password Here.." class="form-control"/>
 				</div>		
 							
 			</div>
@@ -269,7 +268,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 			 <div class="controls">	
 				 			 
 				<a href="home.html" <button class="btn btn-danger">Go Back</button> </a>
-				 <button name="submit_btn" class="btn btn-success" value="Sign UP">Submit</button>
+				 <button name="submit_btn" class="btn btn-success" type="submit">Sign Up</button>
 				 <!-- <input name="submit_btn" type="submit" id="signup_btn" value="Sign UP" class="btn btn-success" /><br>-->
 			</div>
 
