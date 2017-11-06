@@ -302,14 +302,9 @@ $("#dd6").prop("disabled", "disabled");
 <body>
 	<div class="wrapper">
 	
-			<header class="clearfix">
-				<div id="logo" class="pull-left">
-					<a href="sports.html"><img src="logo.png" class="img-responsive" alt="Sports Partner Finder"></a>
-				</div>
-				<div id="login-button" class="pull-right">
-					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger">Sign In</button>
-				</div>
-			</header>
+			<?php
+      			include_once 'navbar_spf.php';
+    		?>
 		
 		<div class="container">
 		<h1>Create a New Account</h1>
