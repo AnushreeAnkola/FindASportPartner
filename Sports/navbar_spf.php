@@ -11,7 +11,7 @@
        	}else{
        		echo '<div id="login-buttons" class="pull-right">
 		        	<button onclick="document.getElementById(\'id01\').style.display=\'block\'" style="width:auto;" class="btn btn-danger">Sign In</button>
-					<a href="signup.php" class=" btn btn-success">Sign Up</a>
+					<a href="new_signup.php" class=" btn btn-success">Sign Up</a>
 				</div>';
        	}
        	?>
