@@ -9,80 +9,9 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <style type="text/css">
 
-.light-table-filter{
-
-
-  height: 40px;
-  margin-top: 35px;
-  margin-bottom: 35px;
-  float:right;
-  margin-right:10px;
-
-}
-.sport{
-  font-family:courier;
-  height: 40px;
-  margin-top: 35px;
-  margin-bottom: 35px;
-  float:left;
-  margin-left:10px;
-
-}
-    table.tableizer-table {
-      font-size: 18px;
-      border: 2px solid #CCC;
-      font-family: Arial, Helvetica, sans-serif;
-      width: 100%;
-      overflow:scroll;
-    }
-
-    .tableizer-table td {
-      padding: 6px;
-      margin: 5px;
-      border: 1px solid #CCC;
-      height: 0px;
-      width: 0px;
-    }
-
-    .tableizer-table th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: center;
-      background-color: #4CAF50;
-      color: white;
-      border: 3px solid #ddd;
-      padding: 8px;
-      margin-left: 10px;
-    }
-
-
-    .filterable {
-    margin-top: 15px;
-}
-.filterable .panel-heading .pull-right {
-    margin-top: -20px;
-}
-.filterable .filters input[disabled] {
-    background-color: transparent;
-    border: none;
-    cursor: auto;
-    box-shadow: none;
-    padding: 0;
-    height: auto;
-}
-.filterable .filters input[disabled]::-webkit-input-placeholder {
-    color: #333;
-}
-.filterable .filters input[disabled]::-moz-placeholder {
-    color: #333;
-}
-.filterable .filters input[disabled]:-ms-input-placeholder {
-    color: #333;
-}
-  </style>
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="table.css" type="text/css" />
 </head>
 
 <body>
@@ -116,24 +45,10 @@
 
     </tbody>
   </table>
-  <button onclick="add()">ADD</button>
+  <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;" class="btn btn-danger">ADD</button>
+<!--<button onclick="add()">ADD</button>-->
 <script>
-  function add() {
-    $("#tblData tbody").append(
-      "<tr class='tableizer-firstrow'>" +
-      "<td><input type='date'/></td>" +
-      "<td><input type='time'/></td>" +
-      "<td><input type='number'/></td>" +
-      "<td><input type='text' id='init'/></td>" +
-      "<td><input type='number'/></td>" +
-      "<td><input type='number'/></td>" +
-      "<td><button type='submit'>JOIN</button></td>" +
-      "<td><img src='img/save.png' class='btnSave'/><img src='img/del.png' class='btnDelete'/></td>"+
-      "</tr>");
-      $(".btnSave").bind("click", Save);
-		$(".btnDelete").bind("click", Delete);
 
-  }
   function Save(){
 	var par = $(this).parent().parent(); //tr
 	var date = par.children("td:nth-child(1)");
@@ -249,6 +164,86 @@ var tdButtons=par.children("td:nth-child(8)");
     </div>
   </form>
 </div>
+
+<div id="id02" class="modal">
+
+  <form class="modal-content animate" action="" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+<table>
+  <tr>
+    <td>
+      <label><b>Date</b></label></td>
+      <td>
+        <input type="date" placeholder="date" name="date" required id="date"></br>
+      </td>
+  </tr>
+
+
+<tr>
+  <td>
+    <label><b>Time</b></label>
+  </td>
+  <td>
+    <input type="time" placeholder="time" name="time" required id="time"></br>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label><b>duration</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="duration" name="duration" required id="duration"></br>
+  </td>
+</tr>
+  <tr>
+  <td>
+    <label><b>Name</b></label>
+  </td>
+    <td>
+      <input type="text" placeholder="Name" name="name" required id="name"></br>
+    </td>
+  </tr>
+
+<tr>
+  <td>
+    <label><b>No. Of Player</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="players" name="players" required id="players"></br>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label><b>Max PLayers</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="Max" name="max" required id="max"></br>
+  </td>
+</tr>
+
+
+</table>
+
+
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <input id="submit" type="submit" value="Submit" style="width:auto;" class="btn btn-danger">
+      <input value="Cancel" class="btn btn-danger" style="width:70px;" onclick="document.getElementById('id02').style.display='none'">
+    <!--  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>-->
+<!--<button onclick="add()">Submit</button>-->
+    </div>
+  </form>
+
+</div>
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
@@ -260,6 +255,49 @@ window.onclick = function(event) {
     }
 }
 
+var modal1 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+}
+
+$(document).ready(function() {
+$("#submit").click(function(e) {
+
+   e.preventDefault();
+   var date = $("#date").val();
+   var time = $("#time").val();
+   var duration = $("#duration").val();
+   var name = $("#name").val();
+   var players = $("#players").val();
+   var max = $("#max").val();
+   if (date === '' || name === '' || time === '' || duration === '' || players === '' || max === '') {
+
+         alert("Please fill all fields");
+
+       }
+       else{
+   $("#tblData tbody").append(
+     "<tr class='tableizer-firstrow'>" +
+     "<td>" + date + "</td>" +
+     "<td>" + time + "</td>" +
+     "<td>" + duration + "</td>" +
+     "<td>" + name + "</td>" +
+     "<td>" + players + "</td>" +
+     "<td>" + max + "</td>" +
+     "<td><button type='submit'>JOIN</button></td>" +
+     "<td><img src='img/edit.png' class='btnEdit'/><img src='img/del.png' class='btnDelete'/></td>"+
+     "</tr>");
+     $(".btnEdit").bind("click", Edit);
+   $(".btnDelete").bind("click", Delete);
+document.getElementById('id02').style.display='none';
+}
+
+});
+});
 </script>
 </body>
 
