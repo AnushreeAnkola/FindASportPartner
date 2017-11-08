@@ -23,12 +23,22 @@ session_start();
     ?>
 		<div class="container-wrapper">
       <div class="row">
+
       <?php
         if(isset($_SESSION['u_id'])){
-          echo '<div class="alert alert-success">
-        <strong>Welcome,' .$_SESSION['fname']. '!</strong> You have successfully logged in.
+          echo '<br><div class="alert alert-success">
+        <strong>Welcome, ' .$_SESSION['fname']. '!</strong> You have successfully logged in.
       </div>';
         }
+        else if (isset($_GET['signup'])) {
+          $singup_val = $_GET['signup'];
+          if ($singup_val == "success") {
+            echo '<br><div class="alert alert-info">
+                    User created successfully! Please sign-in.
+                  </div>';
+          }
+        }
+
       ?>
     </div>
 			<div class="row">
@@ -39,7 +49,7 @@ session_start();
                   
                   <div class="col-sm-6 col-xs-6 col-md-4 col-lg-4 listGroupItem"><a href="#/volleyball.html" class="sportList sports3"><img src="img/sportsIcon-03.png" alt="VOLLEYBALL" class="img-responsive"><p class="sportName">VOLLEYBALL</p></a></div>
                   
-                  <div class="col-sm-6 col-xs-6 col-md-4 col-lg-4 listGroupItem"><a href="#/hiking.html" class="sportList sports4"><img src="img/sportsIcon-04.png" alt="HIKING" class="img-responsive"><p class="sportName">HIKING</p></a></div>
+                  <div class="col-sm-6 col-xs-6 col-md-4 col-lg-4 listGroupItem"><a href="hiking.php" class="sportList sports4"><img src="img/sportsIcon-04.png" alt="HIKING" class="img-responsive"><p class="sportName">HIKING</p></a></div>
                   
                   <div class="col-sm-6 col-xs-6 col-md-4 col-lg-4 listGroupItem"><a  href="#/swimming.html" class="sportList sports5"><img src="img/sportsIcon-05.png" alt="SWIMMING" class="img-responsive"><p class="sportName">SWIMMING</p></a></div>
                   
@@ -53,41 +63,9 @@ session_start();
         	<p class="footertext">Copyright 2017-2018</p>
         </footer>
    </div>
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" method="POST" action="includes/login-inc.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-
-    <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname"></br>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="login_pwd"></br>
-        
-      <button type="submit" name="login-submit">Login</button></br>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
+<!-- paste login.php code here if it does not work from the separate file -->
+<?php
+  include_once 'login.php';
+  ?>
 </body>
 </html>
