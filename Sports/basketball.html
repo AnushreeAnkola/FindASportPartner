@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head runat="server">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="table.css" type="text/css" />
+</head>
+
+<body>
+  <div class="wrapper">
+  <header class="clearfix">
+<div id="logo" class="pull-left">
+  <a href="#"><img src="img/logo.png" class="img-responsive" alt="Sports Partner Finder"></a>
+     </div>
+
+    <div id="login-buttons" class="pull-right">
+<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-danger">Sign In</button>
+    <a href="signup.html" class=" btn btn-success">Sign Up</a>
+
+</div>
+</header>
+<h1 class="sport">BASKETBALL</h1>
+<input type="search" class="light-table-filter" data-table="tableizer-table" placeholder="Search......">
+  <table id="tblData" class="tableizer-table" align="center" >
+    <thead>
+      <tr class="tableizer-firstrow">
+        <th>DATE</th>
+        <th>TIME</th>
+        <th>DURATION</th>
+        <th>NAME OF INITIATOR</th>
+        <th>NO OF PLAYER</th>
+        <th>MAX PLAYER</th>
+        <th>STATUS</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;" class="btn btn-danger">ADD</button>
+  <!--<button onclick="add()">ADD</button>-->
+<script>
+
+  function Save(){
+	var par = $(this).parent().parent(); //tr
+	var date = par.children("td:nth-child(1)");
+	var time = par.children("td:nth-child(2)");
+	var duration = par.children("td:nth-child(3)");
+	var name = par.children("td:nth-child(4)");
+  var players = par.children("td:nth-child(5)");
+  var max = par.children("td:nth-child(6)");
+var tdButtons=par.children("td:nth-child(8)");
+
+	date.html(date.children("input[type=date]").val());
+	time.html(time.children("input[type=time]").val());
+	duration.html(duration.children("input[type=number]").val());
+  name.html(name.children("input[type=text]").val());
+  players.html(players.children("input[type=number]").val());
+  max.html(max.children("input[type=number]").val());
+
+	tdButtons.html("<img src='img/del.png' class='btnDelete'/><img src='img/edit.png' class='btnEdit'/>");
+	$(".btnEdit").bind("click", Edit);
+	$(".btnDelete").bind("click", Delete);
+};
+function Delete(){
+	var par = $(this).parent().parent(); //tr
+	par.remove();
+};
+function Edit(){
+	var par = $(this).parent().parent(); //tr
+  var date = par.children("td:nth-child(1)");
+	var time = par.children("td:nth-child(2)");
+	var duration = par.children("td:nth-child(3)");
+	var name = par.children("td:nth-child(4)");
+  var players = par.children("td:nth-child(5)");
+  var max = par.children("td:nth-child(6)");
+var tdButtons=par.children("td:nth-child(8)");
+
+	date.html("<input type='date' id='date' value='"+date.html()+"'/>");
+	time.html("<input type='time' id='time' value='"+time.html()+"'/>");
+	duration.html("<input type='number' id='duration' value='"+duration.html()+"'/>");
+  name.html("<input type='text' id='name' value='"+name.html()+"'/>");
+  players.html("<input type='number' id='players' value='"+players.html()+"'/>");
+  max.html("<input type='number' id='max' value='"+max.html()+"'/>");
+	tdButtons.html("<img src='img/save.png' class='btnSave'/>");
+
+	$(".btnSave").bind("click", Save);
+	$(".btnEdit").bind("click", Edit);
+	$(".btnDelete").bind("click", Delete);
+};
+
+
+(function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		var _input;
+
+		function _onInputEvent(e) {
+			_input = e.target;
+			var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filter);
+				});
+			});
+		}
+
+		function _filter(row) {
+			var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+			row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+		}
+
+		return {
+			init: function() {
+				var inputs = document.getElementsByClassName('light-table-filter');
+				Arr.forEach.call(inputs, function(input) {
+					input.oninput = _onInputEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+</div>
+<div id="id01" class="modal">
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required></br>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required></br>
+
+      <button type="submit">Login</button></br>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<div id="id02" class="modal">
+
+  <form class="modal-content animate" action="" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+<table>
+  <tr>
+    <td>
+      <label><b>Date</b></label></td>
+      <td>
+        <input type="date" placeholder="date" name="date" required id="date"></br>
+      </td>
+  </tr>
+
+
+<tr>
+  <td>
+    <label><b>Time</b></label>
+  </td>
+  <td>
+    <input type="time" placeholder="time" name="time" required id="time"></br>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label><b>duration</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="duration" name="duration" required id="duration"></br>
+  </td>
+</tr>
+  <tr>
+  <td>
+    <label><b>Name</b></label>
+  </td>
+    <td>
+      <input type="text" placeholder="Name" name="name" required id="name"></br>
+    </td>
+  </tr>
+
+<tr>
+  <td>
+    <label><b>No. Of Player</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="players" name="players" required id="players"></br>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    <label><b>Max PLayers</b></label>
+  </td>
+  <td>
+    <input type="text" placeholder="Max" name="max" required id="max"></br>
+  </td>
+</tr>
+
+
+</table>
+
+
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <input id="submit" type="submit" value="Submit" style="width:auto;" class="btn btn-danger">
+      <input value="Cancel" class="btn btn-danger" style="width:70px;" onclick="document.getElementById('id02').style.display='none'">
+    <!--  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>-->
+<!--<button onclick="add()">Submit</button>-->
+    </div>
+  </form>
+
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+var modal1 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "none";
+    }
+}
+
+$(document).ready(function() {
+$("#submit").click(function(e) {
+
+   e.preventDefault();
+   var date = $("#date").val();
+   var time = $("#time").val();
+   var duration = $("#duration").val();
+   var name = $("#name").val();
+   var players = $("#players").val();
+   var max = $("#max").val();
+   if (date === '' || name === '' || time === '' || duration === '' || players === '' || max === '') {
+
+         alert("Please fill all fields");
+
+       }
+       else{
+   $("#tblData tbody").append(
+     "<tr class='tableizer-firstrow'>" +
+     "<td>" + date + "</td>" +
+     "<td>" + time + "</td>" +
+     "<td>" + duration + "</td>" +
+     "<td>" + name + "</td>" +
+     "<td>" + players + "</td>" +
+     "<td>" + max + "</td>" +
+     "<td><button type='submit'>JOIN</button></td>" +
+     "<td><img src='img/edit.png' class='btnEdit'/><img src='img/del.png' class='btnDelete'/></td>"+
+     "</tr>");
+     $(".btnEdit").bind("click", Edit);
+   $(".btnDelete").bind("click", Delete);
+document.getElementById('id02').style.display='none';
+}
+
+});
+});
+</script>
+</body>
+
+</html>
