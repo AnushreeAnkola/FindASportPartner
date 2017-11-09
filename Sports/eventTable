@@ -1,0 +1,21 @@
+<?php
+
+require 'dbconfig/config.php';
+
+
+         //$sql = "SELECT sport, date, time, duration, name_initiator, num_players, max_players, email_players FROM event";
+         $sql = "SELECT * FROM `event` ";
+         $result = $query($sql);
+
+             if ($result->num_rows > 0) {
+             echo "<table><tr><th>sport</th><th>date</th><th>time</th><th>duration</th><th>name_initiator</th><th>num_players</th><th>max_players</th><th>email_players</th></tr>";
+             // output data of each row
+             while($row = $result->fetch_assoc()) {
+             echo "<tr><td>".$row["id"]."</td><td>".$row["sport"]."</td><td>".$row["date"]."</td><td>".$row["time"]."</td><td>".$row["duration"]."</td><td>".$row["name_initiator"]."</td><td>".$row["num_players"]."</td><td>".$row["email_players"]."</td></tr>";
+                                        }
+             echo "</table>";
+                                        } else {
+             echo "0 results";
+                                        }
+                $conn->close();
+?>
