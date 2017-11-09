@@ -21,7 +21,7 @@ if(isset($_POST['login-submit'])){
 	//Error handlers
 	//check if inputs are empty
 	if(empty($uname) || empty($pwd)){
-		header("Location: ../sports.php?login=empty");
+		header("Location: ../new_Home.php?login=empty");
 		exit();
 	} else{
 		// SQL query to check if user exists with the given username
@@ -30,7 +30,7 @@ if(isset($_POST['login-submit'])){
 		$resultCheck = mysqli_num_rows($result);
 
 		if($resultCheck < 1){  //user does not exist
-			header("Location: ../sports.php?login=error");
+			header("Location: ../new_Home.php?login=error");
 			exit();
 		}else{
 			//check for password
@@ -40,7 +40,7 @@ if(isset($_POST['login-submit'])){
 				$hashedPwdCheck = password_verify($pwd, $row['Password']);
 				//returns boolean
 				if(hashedPwdCheck == false){
-					header("Location: ../sports.php?login=error");
+					header("Location: ../new_Home.php?login=error");
 					exit();
 				} elseif(hashedPwdCheck == true){
 					//Log in the user here, using Session variables
@@ -62,7 +62,7 @@ if(isset($_POST['login-submit'])){
 					// storing values from successful query result into Session variables
 
 
-					header("Location: ../sports.php?login=success");
+					header("Location: ../new_Home.php?login=success");
 					exit();
 				}
 			}
@@ -70,6 +70,6 @@ if(isset($_POST['login-submit'])){
 	}
 
 } else{
-	header("Location: ../sports.php?login=error");
+	header("Location: ../new_Home.php?login=error");
 	exit();
 }

@@ -166,7 +166,7 @@ if(isset($_POST['submit_btn'])) {
 					$sql2 = "INSERT INTO Users (First_Name, Last_Name, Gender, Dob, City, State, ZIP, Phone_Number, Tennis, Basketball, Volleyball, Hiking, Swimming, Soccer, Email, Password) VALUES ('$fname', '$lname','$gender', '$dob', '$city', '$state', '$zip', '$phnum', '$tennis_prof', '$bsk_prof', '$volley_prof', '$hiking_prof', '$swim_prof', '$soccer_prof', '$email', '$hashedPwd');";
 					//$sql2 = "";
 					mysqli_query($con, $sql2);  // do not need a variable as it needs to run
-					header("Location: ../new_signup.php?signup=success");
+					header("Location: ../new_Home.php?signup=success");
 					exit();
 				}
 			}
