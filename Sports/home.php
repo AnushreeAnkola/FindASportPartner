@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head runat="server"> 	  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    
-</head>
+<?php
+include_once 'header.php';
+?>
+
 <body>
    <div class="wrapper">
 		<header class="clearfix">
@@ -26,7 +15,12 @@
 				
 		</div>
 	</header>
-    
+    <?php
+    //check if session variable is set
+      if(isset($_SESSION['username_column'])){
+        
+      }
+    ?>
 		<div class="container-wrapper">
     
 			<div class="row">
@@ -79,7 +73,6 @@
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
