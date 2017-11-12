@@ -61,7 +61,7 @@ if(isset($_GET['hsport']))
     echo '<h1 class="sport">'.$sportVal.'</h1>';
     
 
-      $sql = "SELECT * FROM Events";
+      $sql = "SELECT * FROM events INNER JOIN users ON events.Email = users.Email";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
         // if($resultCheck == 1){  //user does exist
@@ -76,12 +76,19 @@ if(isset($_GET['hsport']))
       <caption class="title"></caption>
       <thead>
         <tr>
+		  <th>Date</th>
+		  <th>Time</th>
+		  <th>Duration</th>
+		  <th>State</th>
+		  <th>City</th>
           <th>Name</th>
+		  <th>Skill Level</th>
+		  <th>Gender</th>
+		  <th>Age</th>
           <th>Email</th>
-          <th>Date</th>
-          <th>Number of Players</th>
-          <th>Duration</th>
-          <th>Request</th>
+          <th># of Players</th>
+          <th>Maximum Players</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -91,11 +98,18 @@ if(isset($_GET['hsport']))
       {
         //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
         echo '<tr>
-            <td>'.$row['Initiator_Name'].'</td>
-            <td>'.$row['Email'].'</td>
-            <td>'. date('l, F d, Y', strtotime($row['Date'])) .'</td>
+            <td>'.$row['Date'].'</td>
+			<td>'.$row['Time'].'</td>
+			<td>'.$row['Duration'].'</td>
+			<td>'.$row['State'].'</td>
+			<td>'.$row['City'].'</td>
+			<td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
+			<td>'.$row['Hiking'].'</td>
+            <td>'.$row['Gender'].'</td>
+			<td>'.$row['Dob'].'</td>
+			<td>'.$row['Email'].'</td>
             <td>'.$row['Num_Players'].'</td>
-            <td>'.$row['Duration'].'</td>
+            <td>'.$row['Max_Players'].'</td>			
             <td><button class="btn btn-submit btn_join" method="POST" action="includes/join-request-inc.php" >JOIN</button></td>
           </tr>';
       }
@@ -207,12 +221,13 @@ if(isset($_GET['hsport']))
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
-            <input id="event_submit" type="submit" value="Submit" style="width:auto;" class="btn btn-danger">
+            <input name="event_submit" id="event_submit" type="submit" value="Submit" style="width:auto;" class="btn btn-success">
             <input value="Cancel" class="btn btn-danger" style="width:70px;" onclick="document.getElementById('addEvent').style.display='none'">
           </div>
 
         </form>
   </div>
+  
 <script>
 
 $(document).ready(function(){
