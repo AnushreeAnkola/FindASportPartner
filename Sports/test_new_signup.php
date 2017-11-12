@@ -317,7 +317,7 @@ $("#dd6").prop("disabled", "disabled");
                 				<p class="help-block">Enter you First Name only</p>
 						</div>
     <!--to alert user-->
-	<script>						
+	<script type="text/javascript">						
 						function validateForm() {
                         var x = document.forms["game"]["fname"].value;
                         if (x == "") {
