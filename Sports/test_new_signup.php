@@ -309,7 +309,7 @@ $("#dd6").prop("disabled", "disabled");
 		<div class="container">
 		<h1>Create a New Account</h1>
 			<div class="col-lg-12">
-				<form name="game" id="game" action="includes/signup-inc.php" method="POST">
+				<form name="game" id="game" action="includes/signup-inc.php" onsubmit="return validateForm()" method="POST">
 					<div class="row">				
 						<div class="col-sm-6 form-group">
 							<label>First Name</label></br>
@@ -317,8 +317,9 @@ $("#dd6").prop("disabled", "disabled");
                 				<p class="help-block">Enter you First Name only</p>
 						</div>
     <!--to alert user-->
-	<script type="text/javascript">						
-						function validateForm() {
+	<script type="text/javascript">	
+		
+		function validateForm() {
                         var x = document.forms["game"]["fname"].value;
                         if (x == "") {
                         alert("Name must be filled out");
