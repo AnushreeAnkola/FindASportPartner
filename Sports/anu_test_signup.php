@@ -340,7 +340,7 @@ $("#dd6").prop("disabled", "disabled");
 					<div class="row">
 						<div class="col-sm-6 form-group">
 							<label>Date of Birth</label> <br>
-								<input type="date" name="dob" class="form-control">
+								<input type="date" name="dob" class="form-control" required />
 						</div>	
 					</div>						
 						
