@@ -427,7 +427,61 @@ $("#dd6").prop("disabled", "disabled");
 								<!--</form>-->
 						</div>
 					</div>
-		
+function validateForm() {
+                        var x = document.forms["game"]["fname"].value;
+	                if (x == "") {
+                        alert("First Name must be filled out");
+				return false;
+                                     }
+		                var y = document.forms["game"]["lname"].value;
+                       
+                    if (y == ""){
+                        alert("Last Name must be filled out");
+                return false;
+                        }
+						var z = document.forms["game"]["dob"].value;
+	                if (z == "") {
+                        alert("Date of Birth must be filled out");
+				return false;
+                                     }
+						var p = document.forms["game"]["city"].value;
+	                if (z == "") {
+                        alert("city must be filled out");
+				return false;
+                                     }	
+                        var k = document.forms["game"]["state"].value;
+	                if (k == "") {
+                        alert("State must be filled out");
+				return false;
+                                     }
+					    var r = document.forms["game"]["zip"].value;
+	                if (r == "") {
+                        alert("Zip must be filled out");
+				return false;
+                                     }
+			            var n = document.forms["game"]["phnum"].value;
+	                if (n == "") {
+                        alert("Phone Number must be filled out");
+				return false;
+                                     }
+						var t = document.forms["game"]["email"].value;
+	                if (t == "") {
+                        alert("Email Id must be filled out");
+				return false;
+                                     }	
+						var s = document.forms["game"]["password"].value;
+	                if (s == "") {
+                        alert("Password must be filled out");
+				return false;
+                                     }
+						var m = document.forms["game"]["password_confirm"].value;
+	                if (m == "") {
+                        alert("Please Confirm password");
+				return false;
+                                     }			 
+									 
+                                                }
+        </script>							
 <script type="text/javascript">
 
 //Syntax: checkboxlimit(checkbox_reference, limit)
