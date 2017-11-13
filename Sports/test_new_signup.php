@@ -321,22 +321,12 @@ $("#dd6").prop("disabled", "disabled");
 		
 		function validateForm() {
                         var x = document.forms["game"]["fname"].value;
-			var x = document.forms["game"]["lname"].value;
-			var x = document.forms["game"]["dob"].value;
-			var x = document.forms["game"]["city"].value;
-			var x = document.forms["game"]["state"].value;
-			
-			
-                        if (x == "") {
+	                if (x == "") {
                         alert("First Name must be filled out");
-				alert("Last Name must be filled out");
-				alert("Date of Birth must be filled out");
-				alert("City must be filled out");
-				alert("State must be filled out");
-                        return false;
+				return false;
                                      }
                                                 }
-            </script>
+         </script>
 
              				 
 						<div class="col-sm-6 form-group">
