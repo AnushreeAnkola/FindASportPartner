@@ -426,8 +426,8 @@ $("#dd6").prop("disabled", "disabled");
 										</select><br />
 								<!--</form>-->
 						</div>
-					</div>
-function validateForm() {
+<script type="text/javascript">					</div>
+                        function validateForm() {
                         var x = document.forms["game"]["fname"].value;
 	                if (x == "") {
                         alert("First Name must be filled out");
