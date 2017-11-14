@@ -13,20 +13,16 @@
 body {
     background-color: lightblue;
 }
-
 header{
 	padding:20px 8%; 
 	background-color:#607d8b;
 }
-
 .wrapper{
 	height:100%;
 }
-
 #login-button{
 	padding-top:15px;
 }
-
 #dd1 {
 	margin-left: 26px;
 }
@@ -34,7 +30,7 @@ header{
 	margin-left: 2px;
 }
 #dd3 {
-	margin-left: 15px;
+	margin-left: 8px;
 }
 #dd4 {
 	margin-left: 28px;
@@ -45,7 +41,6 @@ header{
 #dd6 {
 	margin-left: 23px;
 }
-
 footer { 
   z-index:99;
   bottom:0;
@@ -53,7 +48,6 @@ footer {
   right:0;
   background-color:#ddd; 
  } 
-
 footer p.footertext{ 
    text-align: center; 
    text-transform: uppercase; 
@@ -62,7 +56,6 @@ footer p.footertext{
    display:block;
    margin:5px 0 !important;
 } 
-
 #login { 
  position: relative; 
  right: -1000px; 
@@ -120,25 +113,21 @@ footer p.footertext{
     cursor: pointer;
     width: 100px;
 }
-
 button:hover {
     opacity: 0.8;
 }
-
 /* Extra styles for the cancel button */
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
 }
-
 /* Center the image and position the close button */
 .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
     position: relative;
 }
-
 img.avatar {
     width: 40%;
     border-radius: 50%;
@@ -149,12 +138,10 @@ Width: 390px;
 padding-bottom: 20px;
 	
 }
-
 span.psw {
     float: right;
     padding-top: 16px;
 }
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -169,14 +156,12 @@ span.psw {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
-
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 400px; /* Could be more or less, depending on screen size */
 }
-
 /* The Close Button (x) */
 .close {
     position: absolute;
@@ -186,19 +171,16 @@ span.psw {
     font-size: 35px;
     font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
     color: red;
     cursor: pointer;
 }
-
 /* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
 }
-
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)} 
     to {-webkit-transform: scale(1)}
@@ -208,7 +190,6 @@ span.psw {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
@@ -222,6 +203,16 @@ span.psw {
   </style>
 	
 <script type="text/javascript">
+
+var check = function() {
+  if (document.getElementById('password').value == document.getElementById('password_confirm').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+	} else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+	}
+}	
 
 function checkboxlimit(checkgroup, limit){
 	var checkgroup=checkgroup
@@ -280,7 +271,7 @@ $("#dd6").prop("disabled", "disabled");
 			$("[class*=hiking]").change(function () {
                 if ($(this).is(":checked")) {
                     $("[id*=dd4]").prop('disabled', false);
-                @}
+                }
                 else {
                     $("[id*=dd4]").prop('disabled', true);
                 }
@@ -295,7 +286,6 @@ $("#dd6").prop("disabled", "disabled");
             });
 			});
 			
-
 </script>
 </head>
 
@@ -304,7 +294,6 @@ $("#dd6").prop("disabled", "disabled");
 	
 			<?php
       			include_once 'navbar_spf.php';
-				
     		?>
 		
 		<div class="container">
@@ -475,13 +464,9 @@ $("#dd6").prop("disabled", "disabled");
                                                 }
         </script>							
 <script type="text/javascript">
-
 //Syntax: checkboxlimit(checkbox_reference, limit)
 checkboxlimit(document.forms.game.sport1, 3)
-
 </script>
-
-				
 	
 					<div class="row">
 						<div class="col-sm-6 form-group">
@@ -495,7 +480,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 					<div class="row">				
 						<div class="col-sm-6 form-group">
 							<label>Password</label>
-								<input type="password" id="password" name="password" placeholder="Enter Password Here.." class="form-control" onkeyup='check();' required />
+								<input type="password" id="password" name="password" placeholder="Enter Password Here.." class="form-control" onkeyup='check();' required >
 									<p class="help-block">Password should be at least 4 characters</p>
 						</div>		
 					</div>	
@@ -504,8 +489,8 @@ checkboxlimit(document.forms.game.sport1, 3)
 					<div class="row">				
 						<div class="col-sm-6 form-group">
 							<label>Confirm Password</label>
-								<input type="password" id="password_confirm" name="password_confirm" placeholder="Enter Password Here.." class="form-control" onkeyup='check();'required />
-									<span id="message"> </span>
+								<input type="password" id="password_confirm" name="password_confirm" placeholder="Enter Password Here.." class="form-control" onkeyup='check();' required />
+									<span id="message"> </span>								
 									<p class="help-block">Please confirm password</p>
 						</div>				
 					</div>
@@ -526,18 +511,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 		</div> <!-- close container -->
 	</div> <!-- close wrapper -->
 
-<script type="text/javascript">
-var check = function() {
-  if (document.getElementById('password').value == document.getElementById('password_confirm').value) {
-    document.getElementById('message').style.color = 'green';
-    document.getElementById('message').innerHTML = 'matching';
-	} else {
-    document.getElementById('message').style.color = 'red';
-    document.getElementById('message').innerHTML = 'not matching';
-	}
-}	
-</script>
-
+	
 <footer>
     <p class="footertext">Copyright 2017-2018 SportPartner</p>
 </footer>
@@ -574,7 +548,6 @@ var check = function() {
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
