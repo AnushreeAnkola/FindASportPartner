@@ -538,7 +538,9 @@ checkboxlimit(document.forms.game.sport1, 3)
 
     <div class="container-here">
       <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname"  id="uname"/></br>
+      <!--<input type="text" placeholder="Enter Username" name="uname"  id="uname"/></br>-->
+	  <input type="email" placeholder="Enter Email ID Here.." name="email"  id="uname"/></br>
+	  <!--<input type="email" id="email" name="email" placeholder="Enter Email ID Here.." class="form-control">-->
 
       <label><b>Password</b></label>
       <!--<input type="password1" placeholder="Enter Password" name="psw" id="psw" required /></br>-->
