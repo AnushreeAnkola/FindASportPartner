@@ -1,6 +1,6 @@
 <header class="clearfix">
 		  <div id="logo" class="pull-left">
-			<a href="#"><img src="img/logo.png" class="img-responsive" alt="Sports Partner Finder"></a>
+			<a href="new_Home.php"><img src="img/logo.png" class="img-responsive" alt="Sports Partner Finder"></a>
       </div>
        	<?php
        	//adding a logout button when user is logged in else display sign in option

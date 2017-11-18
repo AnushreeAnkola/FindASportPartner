@@ -3,7 +3,7 @@ session_start();
 
 include 'dbconfig/config.php';
 
-//echo isset($_GET['hsport']);
+ // echo isset($_GET['hsport']);
 
 if(isset($_GET['hsport'])) 
 {
@@ -31,6 +31,10 @@ if(isset($_GET['hsport']))
 
   $sportVal = $_SESSION['sportSelected'];
 }
+else
+{
+	$sportVal = $_SESSION['sportSelected'];
+}
   
 ?>
 <!DOCTYPE html>
@@ -56,12 +60,8 @@ if(isset($_GET['hsport']))
 <div class="wrapper">
     <?php
         include_once 'navbar_spf.php';
-    
 
-    echo '<h1 class="sport">'.$sportVal.'</h1>';
-    
-
-      $sql = "SELECT * FROM events INNER JOIN users ON events.Email = users.Email";
+      $sql = "SELECT * FROM events INNER JOIN users ON events.Email = users.Email WHERE Date >= CURDATE() AND Sport='$sportVal'";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
         // if($resultCheck == 1){  //user does exist
@@ -77,6 +77,7 @@ if(isset($_GET['hsport']))
       <thead>
         <tr>
 		  <th>Date</th>
+		  <th>Time</th>
 		  <th>Time</th>
 		  <th>Duration</th>
 		  <th>State</th>
@@ -98,9 +99,10 @@ if(isset($_GET['hsport']))
       {
         //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
         echo '<tr>
-            <td>'.$row['Date'].'</td>
+            <td>'.date('l, F d, Y', strtotime($row['Date'])).'</td>
 			<td>'.$row['Time'].'</td>
-			<td>'.$row['Duration'].'</td>
+			<td>'.date('h:i A', strtotime($row['Time'])).'</td>
+			<td>'.date('h:i', strtotime($row['Duration'])).'</td>
 			<td>'.$row['State'].'</td>
 			<td>'.$row['City'].'</td>
 			<td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
@@ -184,31 +186,12 @@ if(isset($_GET['hsport']))
 
                 <tr>
                   <td>
-                    <label><b>duration</b></label>
+                    <label><b>Duration</b></label>
                   </td>
                   <td>
-                    <input type="text" placeholder="duration" name="duration" required id="duration"></br>
+                    <input type="text" placeholder="Duration" name="duration" required id="duration"></br>
                   </td>
                 </tr>
-
-                <tr>
-                  <td>
-                    <label><b>Name</b></label>
-                  </td>
-                    <td>
-                      <input type="text" placeholder="Name" name="name" required id="name"></br>
-                    </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <label><b>No. Of Player</b></label>
-                  </td>
-                  <td>
-                    <input type="text" placeholder="players" name="players" required id="players"></br>
-                  </td>
-                </tr>
-
                 <tr>
                   <td>
                     <label><b>Max PLayers</b></label>
