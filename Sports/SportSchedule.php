@@ -3,39 +3,45 @@ session_start();
 
 include 'dbconfig/config.php';
 
- // echo isset($_GET['hsport']);
+//echo isset($_GET['hsport']);
 
 if(isset($_GET['hsport'])) 
 {
   $hvalue = $_GET['hsport'];
 
   if($hvalue=="Tennis"){
-    echo 'Tennis clicked!';
+    //echo 'Tennis clicked!';
     $_SESSION['sportSelected'] = "Tennis";
   } elseif ($hvalue=="Basketball") {
-    echo 'Basketball clicked!';
+    //echo 'Basketball clicked!';
     $_SESSION['sportSelected'] = "Basketball";
   } elseif ($hvalue=="Volleyball") {
-    echo 'Volleyball clicked!';
+    //echo 'Volleyball clicked!';
     $_SESSION['sportSelected'] = "Volleyball";
   }  elseif ($hvalue=="Hiking") {
-    echo 'Hiking clicked!';
+    //echo 'Hiking clicked!';
     $_SESSION['sportSelected'] = "Hiking";
   } elseif ($hvalue=="Swimming") {
-    echo 'Swimming clicked!';
+    //echo 'Swimming clicked!';
     $_SESSION['sportSelected'] = "Swimming";
   } elseif ($hvalue=="Soccer") {
-    echo 'Soccer clicked!';
+    //echo 'Soccer clicked!';
     $_SESSION['sportSelected'] = "Soccer";
   }
 
   $sportVal = $_SESSION['sportSelected'];
 }
-else
-{
-	$sportVal = $_SESSION['sportSelected'];
-}
   
+// code to delete record when user clicks on delete button of his/her own record
+if(isset($_GET['delete_id']))
+{
+     //$sql_query="DELETE FROM users WHERE user_id=".$_GET['delete_id'];   NEED to write UPDATE query
+    $sql_query="UPDATE Events SET Delete_Event=1 WHERE Event_ID =".$_GET['delete_id'];
+     mysqli_query($con, $sql_query);
+     //header("Location: SportSchedule.php");
+     //exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +66,12 @@ else
 <div class="wrapper">
     <?php
         include_once 'navbar_spf.php';
+          
+  
+    echo '<div class="page-header"><h1 class="sport">'.$sportVal.'</h1></div>';
+    
 
-      $sql = "SELECT * FROM events INNER JOIN users ON events.Email = users.Email WHERE Date >= CURDATE() AND Sport='$sportVal'";
+      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Sport = '$sportVal' AND Delete_Event=0";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
         // if($resultCheck == 1){  //user does exist
@@ -71,21 +81,26 @@ else
 
     ?>
 
+       <!-- Code for Add button which will insert values -->
+        
+      <button onclick="document.getElementById('addEvent').style.display='block'" style="width:auto;" class="btn btn-warning btn-lg">Initiate Event</button>
+      <br><br>
+
   <!-- Code to add a table wich will have values from the Events table from the database -->
   <table class="data-table" id="myTable">
       <caption class="title"></caption>
+    
       <thead>
         <tr>
-		  <th>Date</th>
-		  <th>Time</th>
-		  <th>Time</th>
-		  <th>Duration</th>
-		  <th>State</th>
-		  <th>City</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Duration</th>
+      <th>State</th>
+      <th>City</th>
           <th>Name</th>
-		  <th>Skill Level</th>
-		  <th>Gender</th>
-		  <th>Age</th>
+      <th>Skill Level</th>
+      <th>Gender</th>
+      <th>Age</th>
           <th>Email</th>
           <th># of Players</th>
           <th>Maximum Players</th>
@@ -98,21 +113,29 @@ else
       while ($row = mysqli_fetch_assoc($result))
       {
         //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
+        /* check for session variable of email id. This is used to set the td tag to display delete button if logged in user matches
+        the user email id in the data table. */
+        if (isset($_SESSION['u_id'])) {
+          $deleteRowBtn = (($row['Email'] == $_SESSION['u_id'])?'<a href="javascript:delete_id('.$row['Event_ID'].')"><span class="glyphicon glyphicon-remove-circle"></span></a>':"");
+        }else{
+          $deleteRowBtn="";
+        }
+
+
         echo '<tr>
-            <td>'.date('l, F d, Y', strtotime($row['Date'])).'</td>
-			<td>'.$row['Time'].'</td>
-			<td>'.date('h:i A', strtotime($row['Time'])).'</td>
-			<td>'.date('h:i', strtotime($row['Duration'])).'</td>
-			<td>'.$row['State'].'</td>
-			<td>'.$row['City'].'</td>
-			<td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
-			<td>'.$row['Hiking'].'</td>
-            <td>'.$row['Gender'].'</td>
-			<td>'.$row['Dob'].'</td>
-			<td>'.$row['Email'].'</td>
-            <td>'.$row['Num_Players'].'</td>
-            <td>'.$row['Max_Players'].'</td>			
-            <td><button class="btn btn-submit btn_join" method="POST" action="includes/join-request-inc.php" >JOIN</button></td>
+            <td>'.$row['Date'].'</td>
+      <td>'.$row['Time'].'</td>
+      <td>'.$row['Duration'].'</td>
+      <td>'.$row['State'].'</td>
+      <td>'.$row['City'].'</td>
+      <td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
+      <td>'.$row['Hiking'].'</td>
+      <td>'.$row['Gender'].'</td>
+      <td>'.$row['Dob'].'</td>
+      <td>'.$row['Email'].'</td>
+      <td>'.$row['Num_Players'].'</td>
+      <td>'.$row['Max_Players'].'</td>      
+      <td><button class="btn btn-submit btn_join btn-sm" method="POST" action="includes/join-request-inc.php" >JOIN</button>'.$deleteRowBtn.'</td>
           </tr>';
       }
 
@@ -126,8 +149,7 @@ else
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <!-- Code for Add button which will insert values -->
-    <button onclick="document.getElementById('addEvent').style.display='block'" style="width:auto;" class="btn btn-danger">ADD</button>
+   
 </div>
 
 
@@ -186,12 +208,31 @@ else
 
                 <tr>
                   <td>
-                    <label><b>Duration</b></label>
+                    <label><b>duration</b></label>
                   </td>
                   <td>
-                    <input type="text" placeholder="Duration" name="duration" required id="duration"></br>
+                    <input type="text" placeholder="duration" name="duration" required id="duration"></br>
                   </td>
                 </tr>
+
+                <tr>
+                  <td>
+                    <label><b>Name</b></label>
+                  </td>
+                    <td>
+                      <input type="text" placeholder="Name" name="name" required id="name"></br>
+                    </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <label><b>No. Of Player</b></label>
+                  </td>
+                  <td>
+                    <input type="text" placeholder="players" name="players" required id="players"></br>
+                  </td>
+                </tr>
+
                 <tr>
                   <td>
                     <label><b>Max PLayers</b></label>
@@ -213,6 +254,17 @@ else
   
 <script>
 
+//function to execute on click of delete button
+function delete_id(id)
+{
+     if(confirm('Sure To Remove This Record ?'))
+     {
+        //alert(id);
+        //alert("<?php echo $sportVal ?>");
+        window.location.href='SportSchedule.php?delete_id='+id+'&hsport=<?php echo $sportVal ?>';
+     }
+}
+
 $(document).ready(function(){
     $('#myTable').DataTable();
 });
@@ -225,7 +277,7 @@ $("#myTable").on("click", "button.btn_join", function(e) {
     //alert(jEmail);
 
     //sending value retrieved from jQuery into php variable
-    $.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(2)").text(), function (response) {
+    $.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(10)").text(), function (response) {
       alert(response);
    });
 
