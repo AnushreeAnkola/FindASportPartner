@@ -60,6 +60,8 @@ table {
       border-color: #ffff0f;
     }
 
+    
+
     .data-table th:nth-of-type(2) {
 
       display: none;
@@ -76,4 +78,8 @@ table {
     .data-table tbody td:empty
     {
       background-color: #ffcccc;
+    }
+
+    .sportHeading {
+      font-size: 37px;
     }
