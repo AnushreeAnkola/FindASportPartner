@@ -50,7 +50,7 @@
 		}
 
 		if($Event_Conflict == "False"){
-			$sql3 = "INSERT INTO `events`(`Sport`, `Date`, `Start_Time`, `Finish_Time`, `Email`, `Max_Players`) VALUES ('$sport','$date','$start_time', '$finish_time', '$email','$max')";
+			$sql3 = "INSERT INTO `Events`(`Sport`, `Date`, `Start_Time`, `Finish_Time`, `Email`, `Max_Players`) VALUES ('$sport','$date','$start_time', '$finish_time', '$email','$max')";
 		
 			$query_run=mysqli_query($con,$sql3);
 		
