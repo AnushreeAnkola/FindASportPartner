@@ -20,7 +20,7 @@
 		// **********************   Check for CONFLICT event ***********************		
 		// First check for same date events
 		
-		$sql = "SELECT * FROM Events WHERE Date='$date'";
+		$sql = "SELECT * FROM Events WHERE Date='$date' AND Sport='$sport' AND Delete_Event=0";
 		
 		$result = mysqli_query($con, $sql);
 		
