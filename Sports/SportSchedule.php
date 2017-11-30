@@ -72,7 +72,10 @@ if(isset($_GET['delete_id']))
     echo '<h1 class="sport sportHeading">'.$_SESSION['sportSelected'].'</h1><br>';
     
       // ********************** MODIFY DATE <= to >= and ADD ORDER BY CLAUSE  **********************************
-      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = '$sportVal' AND Delete_Event=0";
+      //$sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date >= CURDATE() AND Sport = '$sportVal' AND Delete_Event=0";
+
+    //*************************Comment below and uncomment above LOC ****************************
+      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Sport = '$sportVal' AND Delete_Event=0";
       //$sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = 'echo implode(, $_SESSION\['sportSelected'\])' AND Delete_Event=0";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
