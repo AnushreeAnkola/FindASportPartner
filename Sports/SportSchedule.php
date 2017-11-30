@@ -68,10 +68,12 @@ if(isset($_GET['delete_id']))
         include_once 'navbar_spf.php';
           
   
-    echo '<div class="page-header"><h1 class="sport">'.$sportVal.'</h1></div>';
+    //echo '<h1 class="sport sportHeading">'.$sportVal.'</h1><br>';
+    echo '<h1 class="sport sportHeading">'.$_SESSION['sportSelected'].'</h1><br>';
     
-
-      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Sport = '$sportVal' AND Delete_Event=0";
+      // ********************** MODIFY DATE <= to >= and ADD ORDER BY CLAUSE  **********************************
+      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = '$sportVal' AND Delete_Event=0";
+      //$sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = 'echo implode(, $_SESSION\['sportSelected'\])' AND Delete_Event=0";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
         // if($resultCheck == 1){  //user does exist
@@ -82,8 +84,15 @@ if(isset($_GET['delete_id']))
     ?>
 
        <!-- Code for Add button which will insert values -->
-        
-      <button onclick="document.getElementById('addEvent').style.display='block'" style="width:auto;" class="btn btn-warning btn-lg">Initiate Event</button>
+       <p class="bg-primary text-center">Click on "Initiate Event" to add an event of your choice. (ONLY FOR REGISTERED USERS)</p> 
+       
+       <?php 
+       // escape single quotes or opt to store html in a separate php variable and displayed only for logged in user
+       if (isset($_SESSION['u_id'])){
+        echo '<center><button onclick="document.getElementById(\'addEvent\').style.display=\'block\'" style="width:auto;" class="btn btn-warning btn-lg">Initiate Event</button></center>';
+     }
+     ?>
+      
       <br><br>
 
   <!-- Code to add a table wich will have values from the Events table from the database -->
@@ -93,18 +102,19 @@ if(isset($_GET['delete_id']))
       <thead>
         <tr>
       <th>Date</th>
-      <th>Time</th>
-      <th>Duration</th>
+      <th>Event ID</th>
+      <th>Start Time</th>
+      <th>Finish Time</th>
       <th>State</th>
       <th>City</th>
-          <th>Name</th>
+      <th>Name</th>
       <th>Skill Level</th>
       <th>Gender</th>
       <th>Age</th>
-          <th>Email</th>
-          <th># of Players</th>
-          <th>Maximum Players</th>
-          <th>Action</th>
+      <th>Email</th>
+      <th># of Players</th>
+      <th>Maximum Players</th>
+      <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -114,28 +124,32 @@ if(isset($_GET['delete_id']))
       {
         //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
         /* check for session variable of email id. This is used to set the td tag to display delete button if logged in user matches
-        the user email id in the data table. */
+        the user email id in the data table and do not display the Join button as user cannot join his/her own event. */
         if (isset($_SESSION['u_id'])) {
-          $deleteRowBtn = (($row['Email'] == $_SESSION['u_id'])?'<a href="javascript:delete_id('.$row['Event_ID'].')"><span class="glyphicon glyphicon-remove-circle"></span></a>':"");
+          //$deleteRowBtn = (($row['Email'] == $_SESSION['u_id'])?'<a href="javascript:delete_id('.$row['Event_ID'].')"><span class="glyphicon glyphicon-remove-circle"></span></a>':'<button class="btn btn-submit btn_join btn-sm" method="POST" action="includes/join-request-inc.php" >JOIN</button>');
+          $deleteRowBtn = (($row['Email'] == $_SESSION['u_id'])?'<a href="javascript:delete_id('.$row['Event_ID'].')"><span class="glyphicon glyphicon-remove-circle"></span></a>':'<button class="btn btn-submit btn_join btn-sm">JOIN</button>');
         }else{
-          $deleteRowBtn="";
+          $deleteRowBtn= "";
         }
 
+        //age calculation
+        $userAge = (date('Y') - date('Y',strtotime($row['Dob'])));
 
         echo '<tr>
-            <td>'.$row['Date'].'</td>
-      <td>'.$row['Time'].'</td>
-      <td>'.$row['Duration'].'</td>
-      <td>'.$row['State'].'</td>
-      <td>'.$row['City'].'</td>
-      <td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
-      <td>'.$row['Hiking'].'</td>
-      <td>'.$row['Gender'].'</td>
-      <td>'.$row['Dob'].'</td>
-      <td>'.$row['Email'].'</td>
-      <td>'.$row['Num_Players'].'</td>
-      <td>'.$row['Max_Players'].'</td>      
-      <td><button class="btn btn-submit btn_join btn-sm" method="POST" action="includes/join-request-inc.php" >JOIN</button>'.$deleteRowBtn.'</td>
+            <td>'.date('l, F d, Y', strtotime($row['Date'])).'</td>
+            <td>'.$row['Event_ID'].'</td>
+            <td>'.date('h:i A', strtotime($row['Start_Time'])).'</td>
+            <td>'.date('h:i A', strtotime($row['Finish_Time'])).'</td>
+            <td>'.$row['State'].'</td>
+            <td>'.$row['City'].'</td>
+            <td>'.$row['First_Name'].'  '.$row['Last_Name'].'</td>
+            <td>'.$row[$sportVal].'</td>
+            <td>'.$row['Gender'].'</td>
+            <td>'.$userAge.'</td>
+            <td>'.$row['Email'].'</td>
+            <td>'.$row['Num_Players'].'</td>
+            <td>'.$row['Max_Players'].'</td>      
+            <td>'.$deleteRowBtn.'</td>
           </tr>';
       }
 
@@ -199,37 +213,19 @@ if(isset($_GET['delete_id']))
 
                 <tr>
                   <td>
-                    <label><b>Time</b></label>
+                    <label><b>Start Time</b></label>
                   </td>
                   <td>
-                    <input type="time" placeholder="time" name="time" required id="time"></br>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <label><b>duration</b></label>
-                  </td>
-                  <td>
-                    <input type="text" placeholder="duration" name="duration" required id="duration"></br>
+                    <input type="time" placeholder="time" name="stime" required id="time"></br>
                   </td>
                 </tr>
 
                 <tr>
                   <td>
-                    <label><b>Name</b></label>
-                  </td>
-                    <td>
-                      <input type="text" placeholder="Name" name="name" required id="name"></br>
-                    </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <label><b>No. Of Player</b></label>
+                    <label><b>Finish Time</b></label>
                   </td>
                   <td>
-                    <input type="text" placeholder="players" name="players" required id="players"></br>
+                    <input type="time" placeholder="time" name="ftime" required id="time"></br>
                   </td>
                 </tr>
 
@@ -257,7 +253,7 @@ if(isset($_GET['delete_id']))
 //function to execute on click of delete button
 function delete_id(id)
 {
-     if(confirm('Sure To Remove This Record ?'))
+     if(confirm('Sure To Remove This Event ?'))
      {
         //alert(id);
         //alert("<?php echo $sportVal ?>");
@@ -276,8 +272,9 @@ $("#myTable").on("click", "button.btn_join", function(e) {
     //var jEmail = $(this).parent().siblings(":nth-child(2)").text();
     //alert(jEmail);
 
-    //sending value retrieved from jQuery into php variable
-    $.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(10)").text(), function (response) {
+    //sending value retrieved from jQuery into php variable. second column contains Event_ID value that is hidden using CSS
+    //$.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(4)").text(), function (response) {
+      $.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(2)").text(), function (response) {
       alert(response);
    });
 
