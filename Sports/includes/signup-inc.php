@@ -137,7 +137,7 @@ if(isset($_POST['submit_btn'])) {
 	} else {
 		//Check if input characters are valid
 		//preg_match is a php function which checks for pattern of strings
-		if(!preg_match("/^[a-zA-Z]*$/", $fname) || !preg_match("/^[a-zA-Z]*$/", $lname) || !preg_match("/^[a-zA-Z]*$/", $city) || !preg_match("/^[a-zA-Z]*$/", $state)){
+		if(!preg_match("/^[a-zA-Z]*$/", $fname) || !preg_match("/^[a-zA-Z]*$/", $lname) || !preg_match("/^[a-z A-Z]*$/", $city) || !preg_match("/^[a-zA-Z]*$/", $state)){
 			header("Location: ../new_signup.php?signup=invalid");
 			exit();
 		}  else{
