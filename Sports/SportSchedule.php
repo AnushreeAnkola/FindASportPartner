@@ -198,7 +198,7 @@ if(isset($_GET['delete_id']))
   <!-- Code for AddEvent div which holdds fiels to input event in Events table -->
   <div id="addEvent" class="modal">
 
-        <form class="modal-content animate" action="includes/addEvent-inc.php" method="POST">
+        <form class="modal-content animate" action="includes/addEvent-inc.php" onsubmit="return validateForm()" method="POST">
           <div class="imgcontainer">
             <span onclick="document.getElementById('addEvent').style.display='none'" class="close" title="Close Modal">&times;</span>
           </div>
@@ -219,7 +219,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Start Time</b></label>
                   </td>
                   <td>
-                    <input type="time" placeholder="time" name="stime" required id="time"></br>
+                    <input type="time" placeholder="time" name="stime" required id="start"></br>
                   </td>
                 </tr>
 
@@ -228,7 +228,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Finish Time</b></label>
                   </td>
                   <td>
-                    <input type="time" placeholder="time" name="ftime" required id="time"></br>
+                    <input type="time" placeholder="time" name="ftime" required id="end"></br>
                   </td>
                 </tr>
 
@@ -250,8 +250,18 @@ if(isset($_GET['delete_id']))
 
         </form>
   </div>
-  
-<script>
+ <script>
+ function validateForm() {
+	 var start_time = $("#start").val();
+	 var end_time = $("#end").val();
+	 if(start_time > end_time) {
+		 alert("Start time is greater than end time")
+		 return false;
+	 }
+ }
+ 
+</script>
+  <script>
 
 //function to execute on click of delete button
 function delete_id(id)
