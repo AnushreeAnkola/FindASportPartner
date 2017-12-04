@@ -460,14 +460,15 @@ $("#dd6").prop("disabled", "disabled");
                                     alert("Please Confirm password");
 				    return false;
                                      }			 
-									 
-                                                }
+					
 					var check= document.getElementById("sport1").checked;
-					if(check == "false")
+					if(check == false)
 						{
-							alert('You must agree to the terms first.');
+							alert('You must select one sport of preference.');
 							return false;
 						}	
+                                                }
+					
         </script>							
 <script type="text/javascript">
 //Syntax: checkboxlimit(checkbox_reference, limit)
