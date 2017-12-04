@@ -462,6 +462,12 @@ $("#dd6").prop("disabled", "disabled");
                                      }			 
 									 
                                                 }
+					var check= document.getElementById("sport1").checked;
+					if(check == "false")
+						{
+							alert('You must agree to the terms first.');
+							return false;
+						}	
         </script>							
 <script type="text/javascript">
 //Syntax: checkboxlimit(checkbox_reference, limit)
