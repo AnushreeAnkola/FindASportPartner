@@ -14,7 +14,7 @@ table {
     /*table td {
       transition: all .5s;
     }*/
-    
+
     /* Table */
     .data-table {
       border-collapse: collapse;
@@ -22,7 +22,7 @@ table {
       min-width: 537px;
     }
 
-    .data-table th, 
+    .data-table th,
     .data-table td {
       border: 1px solid #e1edff;
       padding: 7px 12px !important;
@@ -59,10 +59,10 @@ table {
     .data-table tbody tr:hover td {
       background-color: #eaf1f7;
 	cursor:default;
-	
+
     }
 
-    
+
 
     .data-table th:nth-of-type(2) {
 
@@ -87,7 +87,7 @@ table {
     }
 
 
-/******Abinash Changes********/
+
 .container-wrapper{
 	padding:0 30px;
 }
