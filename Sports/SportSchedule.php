@@ -237,7 +237,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Max PLayers</b></label>
                   </td>
                   <td>
-                    <input type="text" placeholder="Max" name="max" required id="max"></br>
+                    <input type="number" placeholder="Max" name="max" required id="max"></br>
                   </td>
                 </tr>
               </table>
