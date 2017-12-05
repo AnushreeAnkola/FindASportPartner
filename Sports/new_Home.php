@@ -60,7 +60,9 @@ session_start();
 		
 		</div>
     	<footer>
-        	<p class="footertext">Copyright 2017-2018</p>
+
+        	<p class="footertext"><a href="url" >About </a>
+          <a> </a><a href="url">Contact Us</a></p>
         </footer>
    </div>
 <!-- paste login.php code here if it does not work from the separate file -->
