@@ -11,7 +11,7 @@
     
 <style>
 body {
-    background-color: lightblue;
+    background-color: white;
 }
 header{
 	padding:20px 8%; 
@@ -47,6 +47,7 @@ footer {
   left:0;
   right:0;
   background-color:#ddd; 
+	height: 30px;
  } 
 footer p.footertext{ 
    text-align: center; 
@@ -520,8 +521,10 @@ checkboxlimit(document.forms.game.sport1, 3)
 
 	
 <footer>
-    <p class="footertext">Copyright 2017-2018 SportPartner</p>
-</footer>
+
+        	<p class="footertext"><a href="url" >About </a>
+          <a> </a><a href="url">Contact Us</a></p>
+        </footer>
 		
 	
 	
