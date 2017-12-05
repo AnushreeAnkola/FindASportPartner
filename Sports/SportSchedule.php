@@ -5,7 +5,7 @@ include 'dbconfig/config.php';
 
 //echo isset($_GET['hsport']);
 
-if(isset($_GET['hsport'])) 
+if(isset($_GET['hsport']))
 {
   $hvalue = $_GET['hsport'];
 
@@ -31,7 +31,7 @@ if(isset($_GET['hsport']))
 
   $sportVal = $_SESSION['sportSelected'];
 }
-  
+
 // code to delete record when user clicks on delete button of his/her own record
 if(isset($_GET['delete_id']))
 {
@@ -53,29 +53,28 @@ if(isset($_GET['delete_id']))
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <!-- Files for Data Table -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
-  <link rel="stylesheet" href="css/font-awesome.min.css">
 
-  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> --><!-- Remove the comment from this line and remove the below line also-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/sport_style.css" type="text/css" />
 </head>
 
 <body>
+<div class="container-wrapper" >
 <div class="wrapper">
     <?php
         include_once 'navbar_spf.php';
-          
-  
+
+
     //echo '<h1 class="sport sportHeading">'.$sportVal.'</h1><br>';
     echo '<h1 class="sport sportHeading">'.$_SESSION['sportSelected'].'</h1><br>';
-    
-      // ********************** MODIFY DATE <= to >= and ADD ORDER BY CLAUSE  **********************************
-      //$sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date >= CURDATE() AND Sport = '$sportVal' AND Delete_Event=0";
 
-    //*************************Comment below and uncomment above LOC ****************************
-      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Sport = '$sportVal' AND Delete_Event=0";
+      // ********************** MODIFY DATE <= to >= and ADD ORDER BY CLAUSE  **********************************
+      $sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = '$sportVal' AND Delete_Event=0";
       //$sql = "SELECT * FROM Events INNER JOIN Users ON Events.Email = Users.Email WHERE Date <= CURDATE() AND Sport = 'echo implode(, $_SESSION\['sportSelected'\])' AND Delete_Event=0";
         $result = mysqli_query($con, $sql);
         // $resultCheck = mysqli_num_rows($result);
@@ -85,24 +84,23 @@ if(isset($_GET['delete_id']))
        // }
 
     ?>
-
+	<div class="initiateBlock clearfix">
        <!-- Code for Add button which will insert values -->
-       <p class="bg-primary text-center">Click on "Initiate Event" to add an event of your choice. (ONLY FOR REGISTERED USERS)</p> 
-       
-       <?php 
+       <p class="text-center">Click on "Initiate Event" to add an event of your choice. (ONLY FOR REGISTERED USERS)</p>
+
+       <?php
        // escape single quotes or opt to store html in a separate php variable and displayed only for logged in user
        if (isset($_SESSION['u_id'])){
-        echo '<center><button onclick="document.getElementById(\'addEvent\').style.display=\'block\'" style="width:auto;" class="btn btn-warning btn-lg">Initiate Event</button></center>';
+        echo '<center><button onclick="document.getElementById(\'addEvent\').style.display=\'block\'" style="width:auto;" class="btn btn-primary pull-right"><i class="fa fa-check" aria-hidden="true" style="margin-right:5px"></i>Initiate Event</button></center>';
      }
      ?>
-      
-      <br><br>
+      </div>
 
   <!-- Code to add a table wich will have values from the Events table from the database -->
-  <table class="data-table" id="myTable">
+  <table class="data-table" id="myTable" background="img/grass.jpg">
       <caption class="title"></caption>
-    
-      <thead>
+
+      <thead class="tableHeader">
         <tr>
       <th>Date</th>
       <th>Event ID</th>
@@ -122,7 +120,7 @@ if(isset($_GET['delete_id']))
       </thead>
       <tbody>
       <?php
-      
+
       while ($row = mysqli_fetch_assoc($result))
       {
         //$amount  = $row['amount'] == 0 ? '' : number_format($row['amount']);
@@ -151,14 +149,14 @@ if(isset($_GET['delete_id']))
             <td>'.$userAge.'</td>
             <td>'.$row['Email'].'</td>
             <td>'.$row['Num_Players'].'</td>
-            <td>'.$row['Max_Players'].'</td>      
+            <td>'.$row['Max_Players'].'</td>
             <td>'.$deleteRowBtn.'</td>
           </tr>';
       }
 
       //$row = mysqli_fetch_array($result);
         //echo 'Product: ' . $row['First_Name'] . ' Transaction Date: ' . $row['Dob'] . '</br/>';
-   
+
       ?>
       </tbody>
     </table>
@@ -166,7 +164,7 @@ if(isset($_GET['delete_id']))
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-   
+
 </div>
 
 
@@ -198,7 +196,7 @@ if(isset($_GET['delete_id']))
   <!-- Code for AddEvent div which holdds fiels to input event in Events table -->
   <div id="addEvent" class="modal">
 
-        <form class="modal-content animate" action="includes/addEvent-inc.php" onsubmit="return validateForm()" method="POST">
+        <form class="modal-content animate" action="includes/addEvent-inc.php" method="POST">
           <div class="imgcontainer">
             <span onclick="document.getElementById('addEvent').style.display='none'" class="close" title="Close Modal">&times;</span>
           </div>
@@ -219,7 +217,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Start Time</b></label>
                   </td>
                   <td>
-                    <input type="time" placeholder="time" name="stime" required id="start"></br>
+                    <input type="time" placeholder="time" name="stime" required id="time"></br>
                   </td>
                 </tr>
 
@@ -228,7 +226,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Finish Time</b></label>
                   </td>
                   <td>
-                    <input type="time" placeholder="time" name="ftime" required id="end"></br>
+                    <input type="time" placeholder="time" name="ftime" required id="time"></br>
                   </td>
                 </tr>
 
@@ -237,7 +235,7 @@ if(isset($_GET['delete_id']))
                     <label><b>Max PLayers</b></label>
                   </td>
                   <td>
-                    <input type="number" placeholder="Max" name="max" required id="max"></br>
+                    <input type="text" placeholder="Max" name="max" required id="max"></br>
                   </td>
                 </tr>
               </table>
@@ -250,18 +248,8 @@ if(isset($_GET['delete_id']))
 
         </form>
   </div>
- <script>
- function validateForm() {
-	 var start_time = $("#start").val();
-	 var end_time = $("#end").val();
-	 if(start_time > end_time) {
-		 alert("Start time is greater than end time")
-		 return false;
-	 }
- }
- 
-</script>
-  <script>
+</div>
+<script>
 
 //function to execute on click of delete button
 function delete_id(id)
@@ -280,7 +268,7 @@ $(document).ready(function(){
 
 //code to get the value of the user whom you want to join from the first td in the row
 $("#myTable").on("click", "button.btn_join", function(e) {
-  
+
     //getting value of second column(hidden email)
     //var jEmail = $(this).parent().siblings(":nth-child(2)").text();
     //alert(jEmail);
@@ -291,8 +279,8 @@ $("#myTable").on("click", "button.btn_join", function(e) {
       alert(response);
    });
 
-    
-    
+
+
 });
 
 
