@@ -67,5 +67,9 @@ session_start();
 <?php
   include_once 'login.php';
   ?>
+	  <script>
+  $('#signup').click(function(){
+    location.href='new_signup.php'
+})</script>
 </body>
 </html>
