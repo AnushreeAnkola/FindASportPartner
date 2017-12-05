@@ -201,6 +201,10 @@ span.psw {
        width: 100%;
     }
 }
+#signup
+{
+  opacity: 0;
+}
   </style>
 	
 <script type="text/javascript">
