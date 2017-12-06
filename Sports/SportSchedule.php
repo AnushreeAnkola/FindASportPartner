@@ -3,6 +3,8 @@ session_start();
 
 include 'dbconfig/config.php';
 
+$usernames="";
+
 //echo isset($_GET['hsport']);
 
 if(isset($_GET['hsport']))
@@ -133,6 +135,19 @@ if(isset($_GET['delete_id']))
           $deleteRowBtn= "";
         }
 
+        $sql_display_players = "SELECT CONCAT(`First_Name`,' ', `Last_Name`) AS usr_name FROM Users INNER JOIN User_Requests ON Email = User_Request_Email WHERE Event_ID =".$row['Event_ID'];
+        $select_result = mysqli_query($con, $sql_display_players);
+
+        if (!$select_result) {
+          die(mysqli_error($con));
+          }
+
+          //while loop to iterate through results from the above select query and append usernames in a $usernames variable
+          while ($row1 = mysqli_fetch_assoc($select_result)){
+            $usernames = $usernames.$row1['usr_name']."\n";
+          }
+  
+
         //age calculation
         $userAge = (date('Y') - date('Y',strtotime($row['Dob'])));
 
@@ -148,7 +163,7 @@ if(isset($_GET['delete_id']))
             <td>'.$row['Gender'].'</td>
             <td>'.$userAge.'</td>
             <td>'.$row['Email'].'</td>
-            <td>'.$row['Num_Players'].'</td>
+            <td><a href="#" data-toggle="tooltip" title="'.$usernames.'">'.$row['Num_Players'].'</a></td>
             <td>'.$row['Max_Players'].'</td>
             <td>'.$deleteRowBtn.'</td>
           </tr>';
@@ -249,20 +264,17 @@ if(isset($_GET['delete_id']))
         </form>
   </div>
 </div>
-
-
- <script>
- function validateForm() {
- 	 var start_time = $("#start").val();
- 	 var end_time = $("#end").val();
- 	 if(start_time > end_time) {
- 		 alert("Start time is greater than end time")
- 		 return false;
- 	 }
-  }
-  
- </script>
 <script>
+
+function validateForm() {
+   var start_time = $("#start").val();
+   var end_time = $("#end").val();
+   if(start_time > end_time) {
+     alert("Start time is greater than end time")
+     return false;
+   }
+  }
+
 
 //function to execute on click of delete button
 function delete_id(id)
@@ -290,6 +302,7 @@ $("#myTable").on("click", "button.btn_join", function(e) {
     //$.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(4)").text(), function (response) {
       $.post('includes/join-request-inc.php', 'val=' + $(this).parent().siblings(":nth-child(2)").text(), function (response) {
       alert(response);
+      location.reload();
    });
 
 
