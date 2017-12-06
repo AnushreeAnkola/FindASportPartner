@@ -525,9 +525,7 @@ checkboxlimit(document.forms.game.sport1, 3)
 
 	
 <footer>
-
-        	<p class="footertext"><a href="url" >About </a>
-          <a> </a><a href="url">Contact Us</a></p>
+        	<p class="footertext">Copyright 2017-2018</p>
         </footer>
 		
 	
