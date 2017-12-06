@@ -69,7 +69,7 @@ if(isset($_GET['delete_id']))
 <div class="container-wrapper" >
 <div class="wrapper">
     <?php
-        include_once 'navbar_spf.php';
+        include_once 'navbar_sps.php';
 
 
     //echo '<h1 class="sport sportHeading">'.$sportVal.'</h1><br>';
