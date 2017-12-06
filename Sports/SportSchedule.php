@@ -269,7 +269,7 @@ if(isset($_GET['delete_id']))
 function validateForm() {
    var start_time = $("#start").val();
    var end_time = $("#end").val();
-   if(start_time > end_time) {
+   if(start_time >= end_time) {
      alert("Start time is greater than end time")
      return false;
    }
