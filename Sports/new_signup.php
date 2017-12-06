@@ -370,42 +370,42 @@ $("#dd6").prop("disabled", "disabled");
 									<input type="checkbox" id="sport1" class="tennis" name="tennis_chkbox"/> Tennis 
 										<select name="tennis_sport" id="dd1">
 											<!-- option>Select</option -->
-											<option>Ameteur</option>
+											<option>Beginner</option>
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select> <br /> 
 									<input type="checkbox" id="sport1" class="basketball" name="bsk_chkbox"/> Basketball
 										<select name="bsk_sport" id="dd2">
 											<!-- option>Select</option -->
-											<option>Ameteur</option> 
+											<option>Beginner</option> 
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select><br />
 									<input type="checkbox" id="sport1" class="volleyball" name="volley_chkbox"/> Volleyball
 										<select name="volley_sport" id="dd3">
 											<!-- option>Select</option -->
-											<option>Ameteur</option>
+											<option>Beginner</option>
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select><br />
 									<input type="checkbox" id="sport1" class="hiking" name="hiking_chkbox"/> Hiking
 										<select name="hiking_sport" id="dd4">
 											<!-- option>Select</option -->
-											<option>Ameteur</option>
+											<option>Beginner</option>
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select><br />			
 									<input type="checkbox" id="sport1" class="swimming" name="swim_chkbox"/> Swimming
 										<select name="swim_sport" id="dd5">
 											<!-- option>Select</option -->
-											<option>Ameteur</option>
+											<option>Beginner</option>
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select><br />
 									<input type="checkbox" id="sport1" class="soccer" name="soccer_chkbox"/> Soccer
 										<select name="soccer_sport" id="dd6" disabled>
 											<!-- option>Select</option -->
-											<option>Ameteur</option>
+											<option>Beginner</option>
 											<option>Intermediate</option>
 											<option>Expert</option>
 										</select><br />
