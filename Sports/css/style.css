@@ -61,7 +61,7 @@ header{
 
 	padding:20px 8%; 
 
-	background-color:#607d8b;
+	background-color:#b6c4cb;
 
 }
 
@@ -411,4 +411,8 @@ span.psw {
 	background-color: #009688;
 	border-color: #009688;
 	margin-left: 15px;
+}
+#logo{
+	height:120px;
+	width:230px;
 }
